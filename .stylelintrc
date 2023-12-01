@@ -1,0 +1,53 @@
+{
+ "extends": ["stylelint-scss", "stylelint-config-recommended-scss", "stylelint-config-recess-order"],
+ "plugins": ["stylelint-selector-bem-pattern"],
+ "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/at-mixin-argumentless-call-parentheses": "always",
+    "scss/at-mixin-parentheses-space-before": "never",
+    "scss/dollar-variable-colon-space-after": "always",
+    "scss/function-no-unknown": true,
+    "selector-max-id": 1,
+    "no-irregular-whitespace": true,
+    "length-zero-no-unit": true,
+    "string-quotes": "single",
+    "declaration-colon-space-after": "always",
+    "declaration-block-semicolon-newline-after": "always-multi-line",
+    "declaration-block-semicolon-space-after": "never-single-line",
+    "block-closing-brace-empty-line-before": "never",
+    "block-closing-brace-newline-after": "always",
+    "block-opening-brace-space-after": "always-single-line",
+    "block-opening-brace-space-before": "always",
+    "selector-attribute-brackets-space-inside": "never",
+    "selector-attribute-operator-space-after": "never",
+    "selector-attribute-operator-space-before": "never",
+    "selector-combinator-space-after": "always",
+    "selector-combinator-space-before": "always",
+    "selector-list-comma-space-after": "always-single-line", 
+    "selector-max-empty-lines": 0,
+    "max-empty-lines": [5, { "ignore": ["comments"]}],
+    "max-line-length": 100,
+    "no-eol-whitespace": [ true, {"ignore": ["empty-lines"]}],
+    "no-extra-semicolons": true,
+    "selector-type-case": "lower",
+    "function-name-case": "lower",
+    "value-keyword-case": "lower",
+    "color-hex-case": "upper",
+    "unit-case": "lower",
+    "property-case": "lower",
+    "selector-pseudo-class-case": "lower",
+    "selector-pseudo-element-case": "lower",
+    "media-feature-name-case": "lower",
+    "at-rule-name-case": "lower",
+    "color-no-invalid-hex": true,
+    "plugin/selector-bem-pattern": {
+        "componentName": "[A-Z]+",
+        "componentSelectors": {
+          "initial": "^\\.{componentName}(?:-[a-z]+)?$",
+          "combined": "^\\.combined-{componentName}-[a-z]+$"
+        },
+        "utilitySelectors": "^\\.util-[a-z]+$"
+      }
+ }
+}

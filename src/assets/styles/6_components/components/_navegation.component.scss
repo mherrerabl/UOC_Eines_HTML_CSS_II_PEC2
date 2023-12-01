@@ -1,0 +1,24 @@
+/*------------------------------------*\
+  NAV COMPONENT
+\*------------------------------------*/
+.nav__link {
+    &:not(.nav-link) {
+        @include text($color: $color-white);
+    }
+    
+    &.active {
+        cursor: default;
+
+        &:not(.nav__link-brand) {
+            @include text($color: $color-secundary, $weight: 'bold');
+        }
+    }
+}
+
+.nav__link:is(:hover, :focus) {
+    &:not(.active),
+    &:not(.active) :where(.brand__title, .brand__logo),
+    .fa-brands {
+        color: $color-secundary;
+    }
+}

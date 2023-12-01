@@ -1,0 +1,36 @@
+.players {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5vw;
+    justify-content: space-between;
+
+    .card {
+        flex: 1 1 auto;
+    }
+
+    @media (min-width: $width-sm) {
+        & {
+            gap: 2vw;
+        }
+        
+        .card {
+            flex: 0 1 calc(50% - 2vw);
+        }
+    }
+
+    @media (min-width: $width-lg) {
+        & {
+            gap: 2vw;
+        }
+        
+        .card {
+            flex: 0 1 calc(33% - 2vw);
+        }
+    }
+
+    @media (min-width: $width-xl) {
+        .card {
+            flex: 0 1 calc(25% - 2vw);
+        }
+    }
+}

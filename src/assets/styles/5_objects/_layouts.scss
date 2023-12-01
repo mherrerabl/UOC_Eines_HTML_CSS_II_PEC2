@@ -1,0 +1,24 @@
+/*------------------------------------*\
+  GENERAL LAYOUT
+\*------------------------------------*/
+@layer layouts {
+  @layer footer_league {
+    @import './layouts/footer.layout';
+  }
+
+  @layer front_page {
+    @import './layouts/front-page.layout';
+  }
+
+  @layer players {
+    @import './layouts/players.layout';
+  }
+
+  @layer about {
+    @import './layouts/about.layout';
+  }
+
+  @layer inscription {
+    @import './layouts/inscription.layout';
+  }
+}

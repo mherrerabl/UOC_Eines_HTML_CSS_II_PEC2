@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use 'sass:color';
+
+@mixin text($font: $font-family--text, $weight: 'regular', $color: $color-black) {
+    @if $color != none {
+        font-family: $font;
+        font-weight: map.get($font-family--weight, $weight);
+        color: $color;
+    }
+    @else {
+        font-family: $font;
+        font-weight: map.get($font-family--weight, $weight);
+    }
+}
+
+@mixin colorRGB($property, $color) {
+    #{$property}: #{color.red($color), color.green($color), color.blue($color)};
+}
+
+@mixin make-container($padding-x: $container-padding-x) {
+    width: 100%;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@mixin make-col($size: false, $columns: $grid-columns) {
+    @if $size {
+      flex: 0 0 auto;
+      width: calc(($size / $columns) * 100);
+    }
+    
+    @else {
+      flex: 1 1 0;
+      max-width: 100%;
+    }
+}

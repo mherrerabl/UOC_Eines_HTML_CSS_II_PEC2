@@ -1,0 +1,27 @@
+.brand {
+  display: flex;
+  align-items: center;
+
+    &__logo {
+        display: inline-block;
+        width: 8vw;
+        color: $color-white;
+    }
+
+    &__title {
+      display: inline-block;
+      margin-bottom: 0;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+
+    @media (min-width: $width-sm) {
+      &__logo {
+          width: 50px;
+      }
+    
+      &__title {
+          margin-left: 15px;
+      }
+    }
+}

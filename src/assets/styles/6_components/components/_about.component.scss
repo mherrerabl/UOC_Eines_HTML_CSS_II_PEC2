@@ -1,0 +1,34 @@
+.about {
+    img {
+        max-width: 50%;
+    }
+
+    &__section {
+        &__map {
+            width: 100%;
+            height: 350px;
+        }
+
+        :has(.sponsor-logo) {
+            img {
+                margin-bottom: 15px;
+                border-radius: 50%;
+            }
+        }
+
+        li:has(span) {
+            span {
+                @include text($color: $color-primary, $weight: 'bold');
+            }
+        }
+
+        &:has(+ .about__section) {
+            margin-bottom: 50px;
+        }
+
+        *:where(& > :not(p, &__title)) {
+            margin-right: 25px;
+            margin-left: 25px;
+        }
+    }
+}

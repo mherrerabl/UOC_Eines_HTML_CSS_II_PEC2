@@ -1,0 +1,25 @@
+/*------------------------------------*\
+  FOOTER COMPONENT
+\*------------------------------------*/
+footer {
+    .footer-container {
+        padding-top: 25px;
+        padding-bottom: 25px;
+
+        &:first-child {
+            background-color: $color-transparent;
+        }
+
+        &:last-child {
+            background-color: $color-primary;
+        }
+    }
+
+    .fa-brands {
+        color: $color-white;
+
+        &:is(:hover, :focus) {
+            color: $color-secundary
+        }
+    }
+}

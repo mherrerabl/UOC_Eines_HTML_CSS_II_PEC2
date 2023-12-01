@@ -1,0 +1,39 @@
+header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: $color-primary;
+
+  .nav {
+    &__link:not(.active) {
+      @include text($color: $color-black);
+
+      @media (min-width: $width-md) {
+        & {
+            @include text($color: $color-white);
+        }
+      }
+    }
+
+    &__list-links {
+      @media (min-width: $width-lg) {
+        & {
+          gap: 2vw;
+        }
+      }
+    }
+  }
+
+  .fa-bars {
+    color: $color-white;
+
+    &:is(:hover, :focus) {
+      color: $color-secundary
+    }
+  }
+
+  .navbar-toggler:is(:hover, :focus) {
+    .fa-bars {
+      color: $color-secundary
+    }
+  }
+}

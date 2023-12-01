@@ -1,0 +1,31 @@
+/*------------------------------------*\
+  FORMS COMPONENT
+\*------------------------------------*/
+/*-------------------------------*\
+  General
+\*-------------------------------*/
+.help-message > div {
+    display: none;
+    
+    small {
+        display: block;
+
+        span {
+            font-style: italic;
+        }
+    }
+}
+
+form {
+    & fieldset > div:has(input:focus:required:invalid) {
+        .help-message__required {
+            display: block;
+        }
+    }
+
+    & fieldset > div:has(input[pattern]:focus:invalid) {
+        .help-message__pattern {
+            display: block;
+        }
+    }
+}

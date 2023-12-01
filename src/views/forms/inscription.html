@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'>
+    <title>Document</title>
+
+<style lang='scss'>
+        .level {
+            display: none;
+        }
+
+        *:has(*) {
+            background-color: red;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    
+        .progress {
+            height: 1dvi;
+            width: 100%;
+            border: 1px solid green;
+        }
+
+        .progress__status {
+            width: 5%;
+            background-color: green;
+        }
+
+        input[pattern]:focus:invalid {
+            background-color: red;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <main class='container'>
+        <h2>Formulario de inscripción</h2>
+
+        <h3>Paso <span id='step-position'></span></h3>
+        <div class="progress">
+            <div class="progress__status">
+
+            </div>
+        </div>
+        
+        <form id='inscription__form' class='inscription__form' method='post' novalidate netlify>
+            <fieldset id='step-1' class='inscription__form__personal form-group step'>
+                <legend>Datos personales</legend>
+
+                <div class='inscription__form__personal__name'>
+                    <label class='form-label' for='name'>Nombre:
+                        <input id='name' class='form-control' type='text' name='name' required pattern='[a-zA-Z]{0,60}'>
+                    </label>
+                    <div class='error-message invalid-feedback'>
+                        <div class='error-message__required invalid-feedback'>
+                            <p>Ingrese su nombre.</p>
+                        </div>
+                        <div class='error-message__length'>
+                            <p>El nombre debe tener como máximo 60 carácteres</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='inscription__form__personal__surname'>
+                    <label class='form-label' for='surname'>Apellido/s: 
+                        <input id='surname' class='form-control' type='text' name='surname'>
+                    </label>
+                    <div class='error-message'>
+                        <div class='error-message__required'>
+                            <p>Ingrese su apellido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='inscription__form__personal__age'>
+                    <label class='form-label' for='age'>Edad: 
+                        <input id='age' class='form-control' type='number' name='age'>
+                    </label>
+                    <div class='error-message'>
+                        <div class='error-message__required'>
+                            <p>Ingrese su edad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='inscription__form__personal__phone'>
+                    <label class='form-label' for='phone'>Teléfono/Móvil: 
+                        <input id='phone' class='form-control' type='tel' name='phone'>
+                    </label>
+                    <div class='error-message'>
+                        <div class='error-message__required'>
+                            <p>Ingrese su teléfono de contacto.</p>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class='inscription__form__personal__email'>
+                    <label class='form-label' for='email'>Correo electrónico:
+                        <input id='email' class='form-control' type='email' name='email'>
+                    </label>
+                    <div class='error-message'>
+                        <div class='error-message__required'>
+                            <p>Ingrese su correo electrónico de contacto.</p>
+                        </div>
+                    </div>
+                </div>
+                    
+                <fieldset class='inscription__form__personal__address form-group'>
+                    <legend>Dirección</legend>
+
+                    <div class='inscription__form__personal__address-personal'>
+                        <label class='form-label' for='address-personal'>Dirección:
+                            <input id='address-personal' class='form-control' type='text' name='address'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese su dirección.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='inscription__form__personal__city-personal'>
+                        <label class='form-label' for='city-personal'>Ciudad: 
+                            <input id='city-personal' class='form-control' type='text' name='city'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese la ciudad donde vive.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='inscription__form__personal__zip-personal'>
+                        <label class='form-label' for='zip-personal'>Código postal: 
+                            <input id='zip-personal' class='form-control' type='number' name='zip'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese el código postal de su ciudad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+            <fieldset id='step-2' class='inscription__form__professional form-group step'>
+                <legend>Datos deportivos</legend>
+                
+                <fieldset class='inscription__form__professional__club form-group'>
+                    <legend>Datos del club</legend>
+
+                    <div class='inscription__form__professional__club__name'>
+                        <label class='form-label' for='name-club'>Nombre del club:
+                            <input id='name-club' class='form-control' type='text' name='nameClub'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese el nombre del club del cual es miembro.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='inscription__form__professional__club__address'>
+                        <label class='form-label' for='address-club'>Dirección:
+                            <input id='address-club' class='form-control' type='text' name='addressClub'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese la dirección del club.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='inscription__form__professional__club__city'>
+                        <label class='form-label' for='city-club'>Ciudad: 
+                            <input id='city-club' class='form-control' type='text' name='cityClub'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese la ciudad donde se encuentra el club.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='inscription__form__professional__club__zip'>
+                        <label class='form-label' for='zip-club'>Código postal: 
+                            <input id='zip-club' class='form-control' type='text' name='zipClub'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese el código postal de la ciudad donde se encuentra el club.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='inscription__form__professional__club__phone'>
+                        <label class='form-label' for='phone-club'>Teléfono/Móvil: 
+                            <input id='phone-club' class='form-control' type='tel' name='phoneClub'>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Ingrese un teléfono de contcto del club.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='inscription__form__professional__club__email'>
+                        <label class='form-label' for='email-club'>Correo electrónico:
+                            <input id='email-club' class='form-control' type='email' name='emailClub' required>
+                        </label>
+                        <div class='error-message invalid-feedback'>
+                            <div class='error-message__required'>
+                                <p>Ingrese un correo electrónico de contacto del club.</p>
+                            </div>
+                        </div>
+                    </div>                        
+                </fieldset>
+
+                <fieldset class='inscription__form__professional__sport-level'>
+                    <legend>Categoría y nivel</legend>
+
+                    <div class='inscription__form__professional__sport-level'>
+                        <label class='inscription__form__professional__sport-level__category form-label' for='category'>Categoría
+                            <select id='category' class='form-select' aria-label='Categoría' name='category'>
+                                <option selected disabled>Selecciona una categoría</option>
+                                <option value='a'>Categoría A</option>
+                                <option value='b'>Categoría B</option>
+                                <option value='c'>Categoría C</option>
+                            </select>
+                        </label>
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Seleccione la categoría a la que pertenece.</p>
+                            </div>
+                        </div>
+                    </div>       
+
+                    <div class='inscription__form__professional__sport-level__level'>
+                        <fieldset class='level level-a'>
+                            <legend>Categoría A</legend>
+
+                            <div class='form-check'>
+                                <input id='level_1.5' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_1.5'>Nivel 1.5</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_2' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_2'>Nivel 2</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_2.5' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_2.5'>Nivel 2.5</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_3' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_3'>Nivel 3</label>
+                            </div>
+                        </fieldset>
+                
+                        <fieldset class='level level-b'>
+                            <legend>Categoría B</legend>
+                            <div class='form-check'>
+                                <input id='level_3.5' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_3.5'>Nivel 3.5</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_4' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_4'>Nivel 4</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_4.5' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_4.5'>Nivel 4.5</label>
+                            </div>
+                        </fieldset>
+                
+                        <fieldset class='level level-c'>
+                            <legend>Categoría C</legend>
+                            <div class='form-check'>
+                                <input id='level_5' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_5'>Nivel 5</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_5.5' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_5.5'>Nivel 5.5</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_6' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_6'>Nivel 6</label>
+                            </div>
+                            <div class='form-check'>
+                                <input id='level_7' class='form-check-input' type='radio' name='level'>
+                                <label class='form-check-label' for='level_7'>Nivel 7</label>
+                            </div>                    
+                        </fieldset>
+
+                        <div class='error-message'>
+                            <div class='error-message__required'>
+                                <p>Seleccione el nivel en el que se encuentra.</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+                    
+            <div class='row'>
+                <div class='col-lg-6'>
+                    <button id='prev' class='btn btn-secondary' type='button'>Atrás</button>
+                </div>
+                <div class='col-lg-6 d-flex justify-content-end'>
+                    <button id='next' class='btn btn-secondary' type='button'>Siguiente</button>
+                    <button id='submit' class='btn btn-primary' type='submit'>Enviar</button>
+                </div>
+            </div>
+        </form>
+        
+
+
+
+    </main>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js' integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js' integrity='sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.min.js' integrity='sha512-bE0ncA3DKWmKaF3w5hQjCq7ErHFiPdH2IGjXRyXXZSOokbimtUuufhgeDPeQPs51AI4XsqDZUK7qvrPZ5xboZg==' crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js' integrity='sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r' crossorigin='anonymous'></script>
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js' integrity='sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+' crossorigin='anonymous'></script>
+<script>
+
+
+    $('.step').hide();
+    $('.step').first().show();
+
+    $('#category').on('click', function() {
+        let formCateogrySelected = $('#category').val();
+        $('.level').hide();
+        $('.level-'+formCateogrySelected).show();
+    });
+    // Custom method to validate username
+    $.validator.addMethod('usernameRegex', function (value, element) {
+        return this.optional(element) || /^[a-zA-Z]*$/i.test(value);
+    }, 'Username must contain only letters');
+    $.validator.addMethod('numberRegex', function (value, element) {
+        return this.optional(element) || /^[0-9]*$/i.test(value);
+    }, 'Username must contain only letters');
+
+	$('#next').on('click', function() {
+		var form = $('#inscription__form');
+		form.validate({
+			errorElement: 'span',
+			errorClass: 'error',
+			highlight: function(element, errorClass, validClass) {
+				$(element).closest('.form-group').addClass('has-error');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).closest('.form-group').removeClass('has-error');
+			},
+			rules: {
+				name: {
+					required: true,
+					usernameRegex: true,
+					minlength: 6,
+				},
+				email: {
+					required: true,
+					minlength: 3,
+				},
+
+			},
+			messages: {
+				name: {
+					required: 'Name required',
+				},
+				email: {
+					required: 'Email required',
+				},
+			}
+		});
+
+		if (form.valid() === true) {
+			if ($('#step-1').is(':visible')) {
+				current_fs = $('#step-1');
+				next_fs = $('#step-2');
+			}
+			next_fs.show();
+			current_fs.hide();
+		}
+	});
+
+	$('#prev').on('click', function() {
+		if ($('#step-2').is(':visible')) {
+			current_fs = $('#step-2');
+			prev_fs = $('#step-1');
+		} 
+		prev_fs.show();
+		current_fs.hide();
+	});
+
+//account information --> step-1
+//company_information --> step-2
+//personal-information --> none
+
+
+
+
+    //$('.step:visible').hide().prev().show();
+    //stepShow();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
+    let stepShow = () => {
+        let index = parseInt($('.step:visible').index());
+        const lenghtSteps = parseInt($('.step').length);
+
+        $('#submit').hide();
+        $('#next').show();
+
+        if (index === 0) {
+            $('#prev').prop('disabled', true);
+            $('#next').prop('disabled', false);
+        } else if (index === lenghtSteps-1) {
+           $('#prev').prop('disabled', false);
+           $('#next').prop('disabled', true).hide();
+           $('#submit').show();
+        } else {
+           $('#prev').prop('disabled', false);
+           $('#next').prop('disabled', true).show();
+           $('#submit').hide();
+        }
+
+        $('#step-position').html(index + 1);
+    }
+
+    let validStep1 = false;
+    let validStep2 = false;
+
+    let validateStep = (index) => {
+        let currentStep = parseInt($('.step:visible').index()) +1;
+        //$('.error-message > div').hide();
+        //$('input').removeClass('error');
+
+        if (currentStep === index) {
+   /*        let name = $('.inscription__form__personal #name').val();
+            let surname = $('.inscription__form__personal #surname').val();
+            let age = $('.inscription__form__personal #age').val();
+            let phone = $('.inscription__form__personal #phone').val();
+            let email = $('.inscription__form__personal #email').val();
+            let address = $('.inscription__form__personal #address').val();
+            let city = $('.inscription__form__personal #city').val();
+            let zip = $('.inscription__form__personal #zip').val();
+
+            if(name === '' || name === undefined){
+                $('.inscription__form__personal__name ').show();
+                $('.inscription__form__personal__name input').addClass('error');
+            }
+     */       
+ /*           validStep1 = true;
+            return validStep1;
+        } else if (currentStep === 2) {
+
+            validStep2 = true;
+            return validStep2;
+        } 
+
+        return false;
+    }
+  
+
+    let validateForm = () => {
+        const lenghtSteps = parseInt($('.step').length);
+
+        for (let index = 0; index < lenghtSteps; index++) {
+            validateStep(index+1);
+        }
+
+        if (validStep1 === true && validStep2 === true) {
+            return true;
+        }
+
+        return false;
+    }
+
+    stepShow();
+
+    $('#prev').on('click', function() {
+        $('.step:visible').hide().prev().show();
+        stepShow();
+    });
+
+    $('#next').on('click', function(e) {
+        //e.preventDefault();
+        /*let currentStep = parseInt($('.step:visible').index()) +1;
+
+        if (validateStep(currentStep) === true) {
+            $('.step:visible').hide().next().show();
+            stepShow();
+        }*/
+/*
+        e.preventDefault();
+        if (this.checkValidity() === false) {
+            e.stopPropagation();
+        }
+        this.classList.add('was-validated');
+
+        let name = $('.inscription__form__personal #name').is(':invalid');
+        let surname = $('.inscription__form__personal #surname').is(':invalid');
+        let age = $('.inscription__form__personal #age').is(':invalid');
+        let phone = $('.inscription__form__personal #phone').is(':invalid');
+        let email = $('.inscription__form__personal #email').is(':invalid');
+        let address = $('.inscription__form__personal #address-personal').is(':invalid');
+        let city = $('.inscription__form__personal #city-personal').is(':invalid');
+        let zip = $('.inscription__form__personal #zip-personal').is(':invalid');
+       
+        if (name === false && surname === false && age === false && phone === false && 
+            email === false && address === false && city === false && zip === false 
+        ) {
+            $('.step:visible').hide().next().show();
+            stepShow();
+        }
+    });
+/*
+    document.getElementById('inscription__form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        if (this.checkValidity() === false) {
+            event.stopPropagation();
+        }
+        alert('A');
+        this.classList.add('was-validated');
+
+    }, false);*/
+
+/*
+    $('button[type='submit']').on('click', function(e) {
+       // e.preventDefault();
+ 
+    });
+
+
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    let forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    /*Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+        }, false)
+    });
+    /*
+
+
+    const inscriptionFormStep1 = $('#inscription__form');
+
+    inscriptionFormStep1.validate({
+        rules: {
+            name: 'required',
+            surname: 'required',
+            age: 'required',
+            phone: 'required',
+            email: 'required',
+            address: 'required',
+            city: 'required',
+            zip: 'required',
+        }, 
+        messages: {
+            name: 'required',
+            surname: 'required',
+            age: 'required',
+            phone: 'required',
+            email: 'required',
+            address: 'required',
+            city: 'required',
+            zip: 'required',
+        }
+    })
+    
+    /*
+    inscriptionForm.validate({
+        rules: {
+            name: 'required',
+            surname: 'required',
+            age: 'required',
+            phone: 'required',
+            email: 'required',
+            address: 'required',
+            city: 'required',
+            zip: 'required',
+            nameClub: 'required',
+            addressClub: 'required',
+            cityClub: 'required',
+            zipClub: 'required',
+            phoneClub: 'required',
+            emailClub: 'required',
+            category: 'required',
+            level: 'required'
+        }, 
+        messages: {
+            
+        }
+    });
+/*
+    inscriptionForm.steps({
+        headerTag: 'h3',
+        bodyTag: 'section',
+        transitionEffect: 'fade',
+        enableAllSteps: true,
+        transitionEffectSpeed: 500,
+        labels: {
+            finish: 'Submit',
+            next: 'Next',
+            previous: 'Previous'
+        },
+        onStepChanging: function (event, currentIndex, newIndex){
+            inscriptionForm.validate().settings.ignore = ':disabled,:hidden';
+            if(inscriptionForm.valid()){
+                $('.wizard > .steps li a#wizard-t-'+newIndex).parent().addClass('checked');
+                $('.wizard > .steps li a#wizard-t-'+newIndex).parent().prevAll().addClass('checked');
+                $('.wizard > .steps li a#wizard-t-'+newIndex).parent().nextAll().removeClass('checked');
+            }
+            return inscriptionForm.valid();
+        },
+        onFinishing: function (event, currentIndex){
+            inscriptionForm.validate().settings.ignore = ':disabled';
+            return inscriptionForm.valid();
+        },
+        onFinished: function (event, currentIndex){
+            alert('Submitted!');
+        }
+    });
+
+    // Custom jQuery steps button
+    $('.forward').click(function(){
+        $('#wizard').steps('next');
+    });
+    $('.backward').click(function(){
+        $('#wizard').steps('previous');
+    });
+*/
+
+</script>
+</body>
+</html>

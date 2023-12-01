@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Información de los participantes de la liga comarcal de tenis">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./assets/styles/main.scss"><!-- do not remove this line! -->
+    <title>Participantes</title>
+  </head>
+  <body>
+    <include src="./views/header/header.html"></include>
+    <main class="container container--padding-5vw">
+      <section>
+        <h2>Participantes de la liga</h2> 
+        <div class="players">
+          <include src="./views/players/player_1.html"></include>
+          <include src="./views/players/player_2.html"></include>
+          <include src="./views/players/player_3.html"></include>
+          <include src="./views/players/player_4.html"></include>
+          <include src="./views/players/player_5.html"></include>
+          <!--<include src="./views/players/player_6.html"></include>
+          <include src="./views/players/player_7.html"></include>
+          <include src="./views/players/player_8.html"></include>
+          <include src="./views/players/player_9.html"></include>
+          <include src="./views/players/player_10.html"></include>-->
+        </div>
+      </section>
+    </main>
+    <include src="./views/footer.html"></include>
+    <script type="module" src="./assets/scripts/main.js"></script><!-- do not remove this line! -->
+  </body>
+</html>

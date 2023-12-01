@@ -1,0 +1,69 @@
+/*------------------------------------*\
+  UTILITIES
+\*------------------------------------*/
+@layer utilities {
+    /*-------------------------------*\
+      Generals
+    \*-------------------------------*/
+    :root {
+        @include colorRGB(--bs-info-rgb, $color-secundary);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
+    .container {
+        margin-top: 50px;
+        margin-bottom: 75px;
+    }
+
+    .container--padding-5vw {
+        @media (min-width: $width-xl) {
+            @include make-container($padding-x: 5vw);
+        }
+    }
+
+    .container-lg {
+        padding: 0;
+    }
+
+
+
+    /*-------------------------------*\
+      Header
+    \*-------------------------------*/
+    //Background nav
+    .md-body-tertiary {
+        --bs-bg-opacity: 0;
+    }
+
+    /*--------------------------*\
+      Size menu
+    \*--------------------------*/
+    .offcanvas {
+        --bs-offcanvas-width: 70vw;
+        max-width: 200px;
+
+        @media (min-width: $width-md) {
+            max-width: fit-content;
+        }
+    }
+
+
+    
+    /*-------------------------------*\
+      Toggle button
+    \*-------------------------------*/
+    .navbar-toggler {
+        border: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}

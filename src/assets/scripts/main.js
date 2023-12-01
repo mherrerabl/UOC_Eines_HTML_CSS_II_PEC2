@@ -1,0 +1,229 @@
+/**
+ * Import dependencies from node_modules
+ * see commented examples below
+ */
+
+import * as bootstrap from 'bootstrap';
+import $ from 'jquery';
+import L from 'leaflet';
+import { createApp } from 'vue';
+
+
+/**
+ * Import components
+ */
+import Calendar from './../../views/about/Calendar.vue';
+
+/**
+ * Write any other JavaScript below
+ */
+
++( function() {
+  let location = window.location.pathname.slice(1, window.location.pathname.length);
+
+  if (location.length > 0) {
+    location = location.slice(0, location.length-5);
+  }
+
+  /**
+   * Nav active link
+   */
+  $('.nav__link-about').removeAttr('tabindex');
+  $('.nav__link').removeClass('active');
+
+    switch (location) {
+      case 'about':
+        $('.nav__link-about').attr('tabindex', -1);
+        $('.nav__link-about').addClass('active');
+        break;
+      case 'players':
+        $('.nav__link-players').attr('tabindex', -1);
+        $('.nav__link-players').addClass('active');
+        break;
+      case 'inscription':
+        $('.nav__link-inscription').attr('tabindex', -1);
+        $('.nav__link-inscription').addClass('active');
+        break;
+      case 'bibliography':
+        $('.nav__link-bibliography').attr('tabindex', -1);
+        $('.nav__link-bibliography').addClass('active');
+        break;
+      default:
+        $('.nav__link-home').attr('tabindex', -1);
+        $('.nav__link-brand').attr('tabindex', -1);
+        $('.nav__link-home').addClass('active');
+        $('.nav__link-brand').addClass('active');
+        break;
+    }
+
+    /* Article */ 
+    if($('.about').length) {
+      //Map
+      createMap('map-location', 41.750306229121676, 1.8436313269920916, '', '', 'Club de tenis', 15);
+
+      //Calendar
+      createApp(Calendar).use().mount('#calendar');
+    }
+
+
+
+    /* Inscription */
+    //Allow only press key numbers
+    $('.input-number').on('keydown', function (e) { 
+      if ((e.which < 48 || e.which > 57) && (e.which != 8) && (e.which < 37 || e.which > 40) && (e.which != 46)) {
+          e.preventDefault();
+      }
+    });     
+
+    //Hide all steps and show first step
+    $('.step').hide();
+    $('.step').first().show();
+
+    //When select the category the list of corresponding levels is displayed.
+    $('#category').on('click', function() {
+        let formCateogrySelected = $('#category').val();
+        $('.level').hide();
+        $('.level-'+formCateogrySelected).show();
+    });
+
+    stepShow();
+
+    //Show prev step
+    $('#prev').on('click', function() {
+        $('.step:visible').hide().prev().show();
+        stepShow();
+    });
+
+    //Show next step after confirm all inputs are valid
+    $('#next').on('click', function() {
+      let name = $('.inscription__form__personal #name').is(':invalid');
+      let surname = $('.inscription__form__personal #surname').is(':invalid');
+      let age = $('.inscription__form__personal #age').is(':invalid');
+      let phone = $('.inscription__form__personal #phone').is(':invalid');
+      let email = $('.inscription__form__personal #email').is(':invalid');
+      let address = $('.inscription__form__personal #address-personal').is(':invalid');
+      let city = $('.inscription__form__personal #city-personal').is(':invalid');
+      let zip = $('.inscription__form__personal #zip-personal').is(':invalid');
+      
+      validation(name === false && 
+                surname === false && 
+                age === false && 
+                phone === false && 
+                email === false && 
+                address === false && 
+                city === false && 
+                zip === false
+      );
+    });
+    
+    //Validate last step 
+    $('#inscription__form').on('submit', function(e) {
+      let nameClub = $('.inscription__form__professional #name-club').is(':invalid');
+      let phoneClub = $('.inscription__form__professional #phone-club').is(':invalid');
+      let emailClub = $('.inscription__form__professional #email-club').is(':invalid');
+      let addressClub = $('.inscription__form__professional #address-club').is(':invalid');
+      let cityClub = $('.inscription__form__professional #city-club').is(':invalid');
+      let zipClub = $('.inscription__form__professional #zip-club').is(':invalid');
+      let category = $('.inscription__form__professional #category').is(':invalid');
+      let level = $('.inscription__form__professional input[name="level"').length === 0;
+
+      validation(nameClub === false && 
+                phoneClub === false && 
+                emailClub === false && 
+                addressClub === false && 
+                cityClub === false && 
+                zipClub === false && 
+                category === false && 
+                level === false
+      );
+
+      if ($('#inscription__form').is(':valid')) {
+        console.log("valid");
+      }
+
+      e.preventDefault();
+      if (this.checkValidity() === false) {
+        e.stopPropagation();
+      }
+      this.classList.add('was-validated');
+    });
+
+} )();
+
+//Create map and marker
+function createMap(el, latitude, altitude, img, alt, title, zoom){
+    const mapOptions = {
+        center: [latitude, altitude],
+        zoom: zoom
+    }
+
+    const globalMap = 'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png';
+    const map = new L.map(el, mapOptions);
+    const layer = new L.TileLayer(globalMap);
+
+    map.addLayer(layer);
+    
+    let markerOptions = {
+        title: title,
+        clickable: true
+    }
+    const marker = new L.Marker([latitude, altitude], markerOptions);
+    if(img === ''){
+        marker.bindPopup('<p style="text-align: center">'+title+'</p>').openPopup();
+    }else{
+        marker.bindPopup('<img style="width: 200px" src="'+img+'" alt="'+alt+'"><p style="text-align: center">'+title+'</p>').openPopup();
+    }
+    marker.addTo(map);
+}
+
+//Show, hide and disable buttons Prev, Next and Submit.
+function stepShow () {
+  let index = parseInt($('.step:visible').index());
+  const lenghtSteps = parseInt($('.step').length);
+
+  $('#submit').hide();
+  $('#next').show();
+
+  if (index === 0) {
+      $('#prev').prop('disabled', true);
+      $('#next').prop('disabled', false);
+  } else if (index === lenghtSteps-1) {
+     $('#prev').prop('disabled', false);
+     $('#next').prop('disabled', true).hide();
+     $('#submit').show();
+  } else {
+     $('#prev').prop('disabled', false);
+     $('#next').prop('disabled', true).show();
+     $('#submit').hide();
+  }
+
+  //Show in element H3 de position
+  $('#step-position').html(index + 1);
+}
+
+function validation(condition) {
+  let currentStep = parseInt($('.step:visible').index());
+  const lenghtSteps = parseInt($('.step').length);
+
+  $('.help-message').addClass('invalid-feedback');
+
+  if (condition) {
+    $('#inscription__form').removeClass('was-validated');
+    $('.help-message').removeClass('invalid-feedback');
+    if(currentStep + 1 !== lenghtSteps) {
+      $('.step:visible').hide().next().show();
+    }
+    stepShow();
+  } else {
+    $('#inscription__form').addClass('was-validated');
+    $('input:invalid').parent().parent().children('.invalid-feedback').show();
+  }
+
+  $('.was-validated input').on('keyup', function() {
+    if($(this).is(':valid')) {
+      $(this).parent().parent().children('.invalid-feedback').hide();
+    } else {
+      $(this).parent().parent().children('.invalid-feedback').show();
+    }
+  });
+}

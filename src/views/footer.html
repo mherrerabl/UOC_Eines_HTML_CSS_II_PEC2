@@ -1,0 +1,90 @@
+<footer>
+    <div class="footer-container">
+        <div class="container-lg">
+            <div class="footer__contact-form">
+                <section class="text-center">
+                    <h3>Contactanos</h3>
+                    <p>Para cualquier duda no dude en contactarnos:</p>
+                    <a class="d-block mb-2" href="mailto:racquetsleague@racquetsleague.com">racquetsleague@racquetsleague.com</a>
+                    <a class="d-block mb-2" href="tel:+34931998850">931998850</a>
+                    <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#modalForm">
+                        Formulario de contacto
+                    </button>
+
+                    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalFormLabel">Formulario de contacto</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                
+                                <form name="contact" method="POST" netlify>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
+                                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="ejemplo@gmail.com" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
+                                                <textarea class="form-control" placeholder="Envienos su mensaje" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="text-center">
+                                            <input type="submit" value="Enviar" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>   
+    </div>
+
+    <div class="footer-container">
+        <div class="container-lg">
+            <div class="footer__links row">
+                <a class="footer__links__brand nav__link nav__link-brand col-12 col-xl-5" href="/">
+                    <include src="views/header/logo.html"></include>
+                </a>
+                <ul class="footer__links__list row col-12 col-xl-7">
+                    <li class="footer__links__list__item col-4 col-md-auto col-xl-auto">
+                        <a class="nav__link nav__link-home" href="index.html">Inicio</a>
+                    </li>
+                    <li class="footer__links__list__item col-4 col-md-auto col-xl-auto">
+                        <a class="nav__link nav__link-members" href="players.html">Participantes</a>
+                    </li>
+                    <li class="footer__links__list__item col-4 col-md-auto col-xl-auto">
+                        <a class="nav__link nav__link-blog" href="about.html">Sobre la liga</a>
+                    </li>
+                    <li class="footer__links__list__item col-4 col-md-auto col-xl-auto">
+                        <a class="nav__link nav__link-events" href="inscription.html">Inscripción</a>
+                    </li>
+                    <li class="footer__links__list__item col-4 col-md-auto col-xl-auto">
+                        <a class="nav__link nav__link-bibliography" href="bibliography.html">Bibliografía</a>
+                    </li>
+                    <li class="footer__links__list__item col-4 col-md-auto col-xl">
+                        <ul class="footer__links__rss row col-auto">
+                            <li class="col-auto"><a class="nav__link" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li class="col-auto"><a class="nav__link" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                            <li class="col-auto"><a class="nav__link" href="#"><i class="fa-brands fa-google-plus-g"></i></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

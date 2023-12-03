@@ -23,45 +23,18 @@ import Tournament from './../../views/about/Tournament.vue';
   /**
    * Nav
    */
-  let location = window.location.pathname.slice(1, window.location.pathname.length);
+  let currentLocation = window.location.pathname.slice(1, window.location.pathname.length);
 
   
-  if (location.length > 0) {
-    let html = location.slice(location.length-5, location.length)
+  if (currentLocation.length > 0) {
+    let html = currentLocation.slice(currentLocation.length-5, currentLocation.length)
     if (html === '.html') {
-      location = location.slice(0, location.length-5);
+      currentLocation = currentLocation.slice(0, currentLocation.length-5);
     }
+    currentPosition(currentLocation);
   }
 
-  $('.nav__link-about').removeAttr('tabindex');
-  $('.nav__link').removeClass('active');
-
-  switch (location) {
-    case 'about':
-      $('.nav__link-about').attr('tabindex', -1);
-      $('.nav__link-about').addClass('active');
-      break;
-    case 'players':
-      $('.nav__link-players').attr('tabindex', -1);
-      $('.nav__link-players').addClass('active');
-      break;
-    case 'inscription':
-      $('.nav__link-inscription').attr('tabindex', -1);
-      $('.nav__link-inscription').addClass('active');
-      break;
-    case 'bibliography':
-      $('.nav__link-bibliography').attr('tabindex', -1);
-      $('.nav__link-bibliography').addClass('active');
-      break;
-    default:
-      $('.nav__link-home').attr('tabindex', -1);
-      $('.nav__link-brand').attr('tabindex', -1);
-      $('.nav__link-home').addClass('active');
-      $('.nav__link-brand').addClass('active');
-      break;
-  }
-
-
+  
 
 
 
@@ -184,6 +157,43 @@ import Tournament from './../../views/about/Tournament.vue';
 /**
  * Functions
  */
+//Change colors link of current position
+function currentPosition(currentLocation) {
+  $('.nav__link-about').removeAttr('tabindex');
+  $('.nav__link').removeClass('active');
+
+  switch (currentLocation) {
+    case 'about':
+      $('.nav__link-about').attr('tabindex', -1);
+      $('.nav__link-about').addClass('active');
+      break;
+    case 'players':
+      $('.nav__link-players').attr('tabindex', -1);
+      $('.nav__link-players').addClass('active');
+      break;
+    case 'inscription':
+      $('.nav__link-inscription').attr('tabindex', -1);
+      $('.nav__link-inscription').addClass('active');
+      break;
+    case 'bibliography':
+      $('.nav__link-bibliography').attr('tabindex', -1);
+      $('.nav__link-bibliography').addClass('active');
+      break;
+    default:
+      $('.nav__link-home').attr('tabindex', -1);
+      $('.nav__link-brand').attr('tabindex', -1);
+      $('.nav__link-home').addClass('active');
+      $('.nav__link-brand').addClass('active');
+      break;
+  }
+
+  
+}
+
+
+
+
+
 //Create map and marker
 function createMap(el, latitude, altitude, img, alt, title, zoom){
     const mapOptions = {
@@ -242,20 +252,17 @@ function progressForm() {
 
 //Show, hide and disable buttons Prev, Next and Submit.
 function stepShow () {
-  let index = parseInt($('.step:visible').index());
-  const lenghtSteps = parseInt($('.step').length);
-
-  console.log($('.step:visible').prop('id'));
-  console.log('index', index);
-  console.log('length', lenghtSteps);
+  let index = $('.step:visible').prop('id');
+  index = parseInt(index.slice(5, index.length));
+  const lengthSteps = parseInt($('.step').length);
 
   $('#submit').hide();
   $('#next').show();
 
-  if (index === 0) {
+  if (index === 1) {
       $('#prev').prop('disabled', true);
       $('#next').prop('disabled', false);
-  } else if (index === lenghtSteps-1) {
+  } else if (index === lengthSteps-1) {
      $('#prev').prop('disabled', false);
      $('#next').prop('disabled', true).hide();
      $('#submit').show();
@@ -271,14 +278,14 @@ function stepShow () {
 
 function validation(condition) {
   let currentStep = parseInt($('.step:visible').index());
-  const lenghtSteps = parseInt($('.step').length);
+  const lengthSteps = parseInt($('.step').length);
 
   $('.help-message').addClass('invalid-feedback');
 
   if (condition) {
     $('#inscription__form').removeClass('was-validated');
     $('.help-message').removeClass('invalid-feedback');
-    if(currentStep + 1 !== lenghtSteps) {
+    if(currentStep + 1 !== lengthSteps) {
       $('.step:visible').hide().next().show();
     }
     stepShow();

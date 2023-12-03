@@ -25,9 +25,12 @@ import Tournament from './../../views/about/Tournament.vue';
    */
   let location = window.location.pathname.slice(1, window.location.pathname.length);
 
-  console.log(location);
+  
   if (location.length > 0) {
-    location = location.slice(0, location.length-5);
+    let html = location.slice(location.length-5, location.length)
+    if (html === '.html') {
+      location = location.slice(0, location.length-5);
+    }
   }
 
   $('.nav__link-about').removeAttr('tabindex');
@@ -242,6 +245,7 @@ function stepShow () {
   let index = parseInt($('.step:visible').index());
   const lenghtSteps = parseInt($('.step').length);
 
+  console.log($('.step:visible').prop('id'));
   console.log('index', index);
   console.log('length', lenghtSteps);
 

@@ -122,19 +122,19 @@ import Tournament from './../../views/about/Tournament.vue';
       );
     });
   
-    //Validate last step 
-   /* $('#inscription__form').on('submit', function(e) {
-
-    });*/
+  //Validate last step 
+   $('#inscription__form').on('submit', function(e) {
+    
+    });
   }
 
   //Code Bootstrap and Netlify to prevent send form
-  const forms = document.querySelectorAll('.needs-validation');
+  const inscriptionForm = document.getElementById('inscription__form');
   const handleSubmit = (event) => {
     event.preventDefault();
     const myForm = event.target;
     const formData = new FormData(myForm);
-    
+    console.log("netlify");
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -152,36 +152,44 @@ import Tournament from './../../views/about/Tournament.vue';
       });
   };
 
+  const validateLastStep = () => {
+    console.log("val");
+    let nameClub = $('.inscription__form__professional #name-club').is(':invalid');
+    let phoneClub = $('.inscription__form__professional #phone-club').is(':invalid');
+    let emailClub = $('.inscription__form__professional #email-club').is(':invalid');
+    let addressClub = $('.inscription__form__professional #address-club').is(':invalid');
+    let cityClub = $('.inscription__form__professional #city-club').is(':invalid');
+    let zipClub = $('.inscription__form__professional #zip-club').is(':invalid');
+    let category = $('.inscription__form__professional #category').is(':invalid');
+    let level = $('.inscription__form__professional input[name="level"]').is(':checked');
+
+    validation(nameClub === false && 
+              phoneClub === false && 
+              emailClub === false && 
+              addressClub === false && 
+              cityClub === false && 
+              zipClub === false && 
+              category === false && 
+              level === true
+    );
+
+  }
+
+  
+
   // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', handleSubmit, event => {
-      let nameClub = $('.inscription__form__professional #name-club').is(':invalid');
-      let phoneClub = $('.inscription__form__professional #phone-club').is(':invalid');
-      let emailClub = $('.inscription__form__professional #email-club').is(':invalid');
-      let addressClub = $('.inscription__form__professional #address-club').is(':invalid');
-      let cityClub = $('.inscription__form__professional #city-club').is(':invalid');
-      let zipClub = $('.inscription__form__professional #zip-club').is(':invalid');
-      let category = $('.inscription__form__professional #category').is(':checked');
-      let level = $('.inscription__form__professional input[name="level"]').is(':checked');
-
-      validation(nameClub === false && 
-                phoneClub === false && 
-                emailClub === false && 
-                addressClub === false && 
-                cityClub === false && 
-                zipClub === false && 
-                category === true && 
-                level === true
-      );
-
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-
-      form.classList.add('was-validated')
-    }, false)
-  })
+  inscriptionForm.addEventListener('submit', event => {
+    validateLastStep();
+    console.log(this);
+    console.log("boot");
+    if (!inscriptionForm.checkValidity()) {
+      handleSubmit(event);
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    console.log("last");
+    inscriptionForm.classList.add('was-validated');
+  }, false);
 } )();
 
 
@@ -263,9 +271,9 @@ function progressForm() {
   progressBar.html(`${progressStatus}%`);
 
   const valuesInvalid = ['#name', '#surname', '#age', '#phone', '#email', '#address-personal', '#city-personal', '#zip-personal',
-                        '#name-club', '#phone-club', '#email-club', '#address-club', '#city-club', '#zip-club'];
+                        '#name-club', '#phone-club', '#email-club', '#address-club', '#city-club', '#zip-club', '#category'];
 
-  const valuesChecked = ['#category', 'input[name="level"]'];
+  const valuesChecked = ['input[name="level"]'];
 
   for (const value of valuesInvalid) {
     if($(value).is(':invalid') === false) {
@@ -276,7 +284,6 @@ function progressForm() {
   }
 
   for (const value of valuesChecked) {
-    console.log($(value).is(':checked'));
     if($(value).is(':checked') === true) {
       progressStatus = progressStatus + 6;
       progressBar.css('width', `${progressStatus}%`);

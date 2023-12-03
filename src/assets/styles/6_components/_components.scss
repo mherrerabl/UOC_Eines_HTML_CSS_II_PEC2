@@ -41,5 +41,9 @@
   @layer forms {
     @import './components/form.component';
   }
+
+  @layer tournament {
+    @import './components/tournament.component';
+  }
 }
 

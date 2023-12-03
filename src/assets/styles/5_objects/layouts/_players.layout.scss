@@ -29,6 +29,10 @@
     }
 
     @media (min-width: $width-xl) {
+        & {
+            justify-content: flex-start;
+        }
+
         .card {
             flex: 0 1 calc(25% - 2vw);
         }

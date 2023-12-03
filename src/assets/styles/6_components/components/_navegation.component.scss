@@ -10,7 +10,7 @@
         cursor: default;
 
         &:not(.nav__link-brand) {
-            @include text($color: $color-secundary, $weight: 'bold');
+            @include text($color: $color-primary, $weight: 'bold');
         }
     }
 }
@@ -19,6 +19,6 @@
     &:not(.active),
     &:not(.active) :where(.brand__title, .brand__logo),
     .fa-brands {
-        color: $color-secundary;
+        color: $color-primary;
     }
 }

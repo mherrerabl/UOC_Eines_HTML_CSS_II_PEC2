@@ -1,1 +1,12 @@
-//About
+.about__section {
+    container: about-origin / inline-size;
+}
+
+@container about-origin (min-width: 900px) {
+    .about__section__origin {
+        grid-template-columns: 35% 60%;
+        gap: 5%;
+        display: grid;
+        margin-left: 5%;
+    }
+}

@@ -1,7 +1,7 @@
 .front-page {
     padding-top: 3vw;
     padding-bottom: 3vw;
-    background-color: $color-primary;
+    background-color: $color-secundary;
 
     &__container {
         background-image: url('./../images/front_page/front-page.jpg');
@@ -27,7 +27,7 @@
             display: flex;
             justify-content: center;
             height: 100px;
-            background-color: $color-primary;
+            background-color: $color-secundary;
         }
 
         .area-xs, .area-sm, .area-md, .area-lg {
@@ -38,7 +38,7 @@
             &__cite-container {
                 &__cite {
                     margin-bottom: 6vw;
-                    background-color: $color-primary;
+                    background-color: $color-secundary;
                 }
 
                 @media (min-width: $width-md) {
@@ -74,13 +74,13 @@
                 height: 100%;
                 outline-width: 2vw;
                 outline-style: solid;
-                outline-color: $color-primary;
+                outline-color: $color-secundary;
             }
 
             &__cite-container {
                 position: relative;
                 min-height: 120px;
-                background-color: $color-primary;
+                background-color: $color-secundary;
 
                 &__cite {
                     position: absolute;

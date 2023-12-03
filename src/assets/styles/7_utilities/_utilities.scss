@@ -9,6 +9,10 @@
         @include colorRGB(--bs-info-rgb, $color-secundary);
     }
 
+    body {
+        --bs-body-font-size: 1.1rem;
+    }
+
     a {
         text-decoration: none;
     }
@@ -65,5 +69,14 @@
         &:focus {
             box-shadow: none;
         }
+    }
+
+
+
+    /*-------------------------------*\
+      Leaflet buttons
+    \*-------------------------------*/
+    .leaflet-control-container {
+        display: none;
     }
 }

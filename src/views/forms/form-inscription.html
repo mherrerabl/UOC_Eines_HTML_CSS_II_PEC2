@@ -1,0 +1,339 @@
+<div class="inscription">
+    <h2>Formulario de inscripción</h2>
+    
+    <h3>Paso <span id="step-position"></span></h3>
+    <div class="progress" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress__status progress-bar progress-bar-striped">4%</div>
+    </div>
+
+    <form id="inscription__form" class="inscription__form needs-validation" method="post" novalidate netlify>
+        <fieldset id="step-1" class="inscription__form__personal form-group step row">
+            <legend class="h4 col-12">Datos personales</legend>
+
+            <div class="inscription__form__personal__name col-12 col-md-6">
+                <label class="form-label" for="name">
+                    <input id="name" class="form-control" type="text" name="name" placeholder="&nbsp;" patern="[a-zA-Z]{1,60}" required>
+                    <span>Nombre</span>
+                </label>
+                <div class="help-message">
+                    <div class="help-message__required">
+                        <small>Ingrese su nombre.</small>
+                    </div>
+                    <div class="help-message__pattern">
+                        <small>El nombre debe estar formado por letras.</small>
+                        <small>Se permite hasta 60 carácteres.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inscription__form__personal__surname col-12 col-md-6">
+                <label class="form-label" for="surname"> 
+                    <input id="surname" class="form-control" type="text" name="surname" placeholder="&nbsp;" patern="[a-zA-Z]{1,60}" required>
+                    <span>Apellido/s</span>
+                </label>
+                <div class="help-message">
+                    <div class="help-message__required">
+                        <small>Ingrese su apellido.</small>
+                    </div>
+                    <div class="help-message__pattern">
+                        <small>El apellido debe estar formado por letras.</small>
+                        <small>Se permite hasta 60 carácteres.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inscription__form__personal__age col-12 col-md-4">
+                <label class="form-label" for="age"> 
+                    <input id="age" class="form-control input-number" type="text" name="age" inputmode="numeric" placeholder="&nbsp;" patern="[0-9]{1,3}" required>
+                    <span>Edad</span>
+                </label>
+                <div class="help-message">
+                    <div class="help-message__required">
+                        <small>Ingrese su edad.</small>
+                    </div>
+                    <div class="help-message__pattern">
+                        <small>La edad debe ser un valor numérico.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inscription__form__personal__phone col-12 col-md-4">
+                <label class="form-label" for="phone"> 
+                    <input id="phone" class="form-control input-number" type="tel" name="phone" placeholder="&nbsp;" patern="[0-9]{9}" required>
+                    <span>Teléfono/Móvil</span>
+                </label>
+                <div class="help-message">
+                    <div class="help-message__required">
+                        <small>Ingrese su teléfono de contacto.</small>
+                    </div>
+                    <div class="help-message__pattern">
+                        <small>El teléfono debe contener 9 números.</small>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="inscription__form__personal__email col-12 col-md-4">
+                <label class="form-label" for="email">
+                    <input id="email" class="form-control" type="email" name="email" placeholder="&nbsp;" patern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" required>
+                    <span>Correo electrónico</span>
+                </label>
+                <div class="help-message">
+                    <div class="help-message__required">
+                        <small>Ingrese su correo electrónico de contacto.</small>
+                    </div>
+                    <div class="help-message__pattern">
+                        <small>El correo debe ser parecido a: <span>ejemplo@ejemplo.com</span>.</small>
+                    </div>
+                </div>
+            </div>
+                
+            <fieldset class="inscription__form__personal__address form-group col-12 row">
+                <legend class="h5">Dirección</legend>
+
+                <div class="inscription__form__personal__address-personal col-12">
+                    <label class="form-label" for="address-personal">
+                        <input id="address-personal" class="form-control" type="text" name="address" placeholder="&nbsp;" patern="[a-zA-Z0-9\s]{1,100}" required>
+                        <span>Dirección</span>
+                    </label>
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Ingrese su dirección.</small>
+                        </div>
+                        <div class="help-message__pattern">
+                            <small>Incluya: Vía, dirección, número y, opcional, piso y puerta.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inscription__form__personal__city-personal col-12 col-md-6">
+                    <label class="form-label" for="city-personal"> 
+                        <input id="city-personal" class="form-control" type="text" name="city" placeholder="&nbsp;" patern="[a-zA-Z]{1,30}" required>
+                        <span>Ciudad</span>
+                    </label>
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Ingrese la ciudad donde vive.</small>
+                        </div>
+                        <div class="help-message__pattern">
+                            <small>La ciudad debe estar formada por letras.</small>
+                            <small>Se permite hasta 30 carácteres.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inscription__form__personal__zip-personal col-12 col-md-6">
+                    <label class="form-label" for="zip-personal"> 
+                        <input id="zip-personal" class="form-control  input-number" type="text" name="zip" inputmode="numeric" placeholder="&nbsp;" patern="[0-9]{5}" required>
+                        <span>Código postal</span>
+                    </label>
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Ingrese el código postal de su ciudad.</small>
+                        </div>
+                        <div class="help-message__pattern">
+                            <small>El código postal debe contener 5 números.</small>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </fieldset>
+
+        <fieldset id="step-2" class="inscription__form__professional form-group step row">
+            <legend class="h4 col-12">Datos deportivos</legend>
+            
+            <fieldset class="inscription__form__professional__club form-group col-12 row">
+                <legend class="h4">Datos del club</legend>
+
+                <div class="inscription__form__professional__club__name col-12">
+                    <label class="form-label" for="name-club">
+                        <input id="name-club" class="form-control" type="text" name="nameClub" placeholder="&nbsp;" patern="[a-zA-Z0-9]{1,60}" required>
+                        <span>Nombre del club</span>
+                    </label>
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Ingrese el nombre del club del cual es miembro.</small>
+                        </div>
+                        <div class="help-message__pattern">
+                            <small>Se permite hasta 60 carácteres.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inscription__form__professional__club__phone col-12 col-md-6">
+                    <label class="form-label" for="phone-club">
+                        <input id="phone-club" class="form-control input-number" type="tel" name="phoneClub" placeholder="&nbsp;" patern="[0-9]{9}" required>
+                        <span>Teléfono/Móvil</span>
+                    </label>
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Ingrese un teléfono de contcto del club.</small>
+                        </div>
+                        <div class="help-message__pattern">
+                            <small>El teléfono debe contener 9 números.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inscription__form__professional__club__email col-12 col-md-6">
+                    <label class="form-label" for="email-club">
+                        <input id="email-club" class="form-control" type="email" name="emailClub" placeholder="&nbsp;" patern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" required>
+                        <span>Correo electrónico</span>
+                    </label>
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Ingrese un correo electrónico de contacto del club.</small>
+                        </div>
+                        <div class="help-message__pattern">
+                            <small>El correo debe ser parecido a: <span>ejemplo@ejemplo.com</span>.</small>
+                        </div>
+                    </div>
+                </div>  
+
+                <fieldset class="col-12 row">
+                    <legend class="h5 col-12">Dirección</legend>
+
+                    <div class="inscription__form__professional__club__address col-12">
+                        <label class="form-label" for="address-club">
+                            <input id="address-club" class="form-control" type="text" name="addressClub" placeholder="&nbsp;" patern="[a-zA-Z0-9\s]{1,100}" required>
+                            <span>Dirección</span>
+                        </label>
+                        <div class="help-message">
+                            <div class="help-message__required">
+                                <small>Ingrese la dirección del club.</small>
+                            </div>
+                            <div class="help-message__pattern">
+                                <small>Incluya: Vía, dirección, número y, opcional, piso y puerta.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inscription__form__professional__club__city col-12 col-md-6">
+                        <label class="form-label" for="city-club"> 
+                            <input id="city-club" class="form-control" type="text" name="cityClub" placeholder="&nbsp;" patern="[a-zA-Z]{1,30}" required>
+                            <span>Ciudad</span>
+                        </label>
+                        <div class="help-message">
+                            <div class="help-message__required">
+                                <small>Ingrese la ciudad donde se encuentra el club.</small>
+                            </div>
+                            <div class="help-message__pattern">
+                                <small>La ciudad debe estar formada por letras.</small>
+                                <small>Se permite hasta 30 carácteres.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inscription__form__professional__club__zip col-12 col-md-6">
+                        <label class="form-label" for="zip-club"> 
+                            <input id="zip-club" class="form-control input-number" type="text" name="zipClub" inputmode="numeric" placeholder="&nbsp;" patern="[0-9]{5}" required>
+                            <span>Código postal</span>
+                        </label>
+                        <div class="help-message">
+                            <div class="help-message__required">
+                                <small>Ingrese el código postal de la ciudad donde se encuentra el club.</small>
+                            </div>
+                            <div class="help-message__pattern">
+                                <small>El código postal debe contener 5 números.</small>
+                            </div>
+                        </div>
+                    </div>  
+                </fieldset>                    
+            </fieldset>
+
+            <fieldset class="inscription__form__professional__sport-level col-12 row">
+                <legend class="h4 col-12">Categoría y nivel</legend>
+
+                <div class="inscription__form__professional__sport-level col-4">
+                    <label class="inscription__form__professional__sport-level__category form-label" for="category">Categoría
+                        <select id="category" class="form-select" name="category" required>
+                            <option value="" selected disabled>Selecciona una categoría</option>
+                            <option value="a">Categoría A</option>
+                            <option value="b">Categoría B</option>
+                            <option value="c">Categoría C</option>
+                        </select>
+                    </label>
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Seleccione la categoría a la que pertenece.</small>
+                        </div>
+                    </div>
+                </div>       
+
+                <div class="inscription__form__professional__sport-level__level">
+                    <fieldset class="level level-a">
+                        <legend class="h5">Categoría A</legend>
+
+                        <div class="form-check">
+                            <input id="level_1.5" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_1.5">Nivel 1.5</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_2" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_2">Nivel 2</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_2.5" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_2.5">Nivel 2.5</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_3" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_3">Nivel 3</label>
+                        </div>
+                    </fieldset>
+            
+                    <fieldset class="level level-b">
+                        <legend class="h4">Categoría B</legend>
+                        <div class="form-check">
+                            <input id="level_3.5" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_3.5">Nivel 3.5</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_4" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_4">Nivel 4</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_4.5" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_4.5">Nivel 4.5</label>
+                        </div>
+                    </fieldset>
+            
+                    <fieldset class="level level-c">
+                        <legend class="h4">Categoría C</legend>
+                        <div class="form-check">
+                            <input id="level_5" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_5">Nivel 5</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_5.5" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_5.5">Nivel 5.5</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_6" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_6">Nivel 6</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="level_7" class="form-check-input" type="radio" name="level" required>
+                            <label class="form-check-label" for="level_7">Nivel 7</label>
+                        </div>                    
+                    </fieldset>
+
+                    <div class="help-message">
+                        <div class="help-message__required">
+                            <small>Seleccione el nivel en el que se encuentra.</small>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </fieldset>
+                
+        <div class="row inscription__form__buttons">
+            <div class="col-6">
+                <button id="prev" class="btn btn-secondary" type="button">Atrás</button>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button id="next" class="btn btn-secondary" type="button">Siguiente</button>
+                <button id="submit" class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,1 +1,10 @@
-//inscription
+.inscription {
+    container: inscription / inline-size;
+}
+
+@container inscription (min-width: 900px) {
+    .inscription__form {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+}

@@ -82,7 +82,7 @@
                 }
             }
 
-            @container (width > 900) {
+            @container about-origin (width > 900) {
                 &__cite-container {
                     margin: auto;
                 }
@@ -108,7 +108,5 @@
         :is(li, p) :is(b, span) {
             @include text($color: $color-secundary, $weight: 'bold');
         }
-
-        
     }
 }

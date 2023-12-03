@@ -21,6 +21,13 @@
     #{$property}: $color;
 }
 
+@mixin center-content($top: 50%, $left: 50%) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate(calc(-1 * $left), calc(-1 * $top));
+}
+
 @mixin make-container($padding-x: $container-padding-x) {
     width: 100%;
     padding-right: $padding-x;

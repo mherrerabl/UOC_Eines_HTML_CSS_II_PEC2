@@ -18,11 +18,24 @@ $color-fourth: #D4D4D4;
 $color-black: #000;
 $color-white: #FFF;
 $color-transparent: color.adjust($color-fourth, $alpha: -0.8);
+$color-gray: color.adjust($color-fourth, $alpha: -0.2);
+$color-success: lch(81% 132 130);
+$color-error: lch(50% 132 36);
+
 
 $width-sm: 576px;
 $width-md: 768px;
 $width-lg: 960px;
 $width-xl: 1200px;
+
+
+/*StatusMark*/
+$sin45: 0.70710678;
+$loader-size: 10dvh;
+$symbol-thickness: 3px;
+$check-height: calc($loader-size / 2);
+$check-width: calc($check-height / 2);
+$check-left: calc($loader-size / 7 + $loader-size / 12);
 
 /*Override Bootstrap*/
 $primary: $color-primary;

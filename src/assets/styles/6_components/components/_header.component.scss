@@ -27,13 +27,13 @@ header {
     color: $color-white;
 
     &:is(:hover, :focus) {
-      color: $color-secundary
+      color: $color-primary
     }
   }
 
   .navbar-toggler:is(:hover, :focus) {
     .fa-bars {
-      color: $color-secundary
+      color: $color-primary
     }
   }
 }

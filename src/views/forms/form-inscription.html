@@ -2,11 +2,11 @@
     <h2>Formulario de inscripción</h2>
     
     <h3>Paso <span id="step-position"></span></h3>
-    <div class="progress" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress" role="progressbar" aria-valuenow="4" aria-valuemin="4" aria-valuemax="100">
         <div class="progress__status progress-bar progress-bar-striped">4%</div>
     </div>
 
-    <form id="inscription__form" class="inscription__form needs-validation" method="post" novalidate netlify>
+    <form id="inscription__form" class="form inscription__form needs-validation" method="post" novalidate netlify>
         <fieldset id="step-1" class="inscription__form__personal form-group step row">
             <legend class="h4 col-12">Datos personales</legend>
 
@@ -87,7 +87,7 @@
                 </div>
             </div>
                 
-            <fieldset class="inscription__form__personal__address form-group col-12 row">
+            <fieldset class="form-group col-12 container row m-0">
                 <legend class="h5">Dirección</legend>
 
                 <div class="inscription__form__personal__address-personal col-12">
@@ -144,7 +144,7 @@
             <fieldset class="inscription__form__professional__club form-group col-12 row">
                 <legend class="h4">Datos del club</legend>
 
-                <div class="inscription__form__professional__club__name col-12">
+                <div class="inscription__form__professional__name-club col-12">
                     <label class="form-label" for="name-club">
                         <input id="name-club" class="form-control" type="text" name="nameClub" placeholder="&nbsp;" pattern="[a-zA-Z0-9]{1,60}" required>
                         <span>Nombre del club</span>
@@ -159,7 +159,7 @@
                     </div>
                 </div>
 
-                <div class="inscription__form__professional__club__phone col-12 col-md-6">
+                <div class="inscription__form__professional__phone-club col-12 col-md-6">
                     <label class="form-label" for="phone-club">
                         <input id="phone-club" class="form-control input-number" type="tel" name="phoneClub" placeholder="&nbsp;" pattern="[0-9]{9}" required>
                         <span>Teléfono/Móvil</span>
@@ -174,7 +174,7 @@
                     </div>
                 </div>
 
-                <div class="inscription__form__professional__club__email col-12 col-md-6">
+                <div class="inscription__form__professional__email-club col-12 col-md-6">
                     <label class="form-label" for="email-club">
                         <input id="email-club" class="form-control" type="email" name="emailClub" placeholder="&nbsp;" pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" required>
                         <span>Correo electrónico</span>
@@ -189,10 +189,10 @@
                     </div>
                 </div>  
 
-                <fieldset class="col-12 row">
+                <fieldset class="col-12 container row m-0">
                     <legend class="h5 col-12">Dirección</legend>
 
-                    <div class="inscription__form__professional__club__address col-12">
+                    <div class="inscription__form__professional__address-club col-12">
                         <label class="form-label" for="address-club">
                             <input id="address-club" class="form-control" type="text" name="addressClub" placeholder="&nbsp;" pattern="[a-zA-Z0-9\s]{1,100}" required>
                             <span>Dirección</span>
@@ -207,7 +207,7 @@
                         </div>
                     </div>
 
-                    <div class="inscription__form__professional__club__city col-12 col-md-6">
+                    <div class="inscription__form__professional__city-club col-12 col-md-6">
                         <label class="form-label" for="city-club"> 
                             <input id="city-club" class="form-control" type="text" name="cityClub" placeholder="&nbsp;" pattern="[a-zA-Z]{1,30}" required>
                             <span>Ciudad</span>
@@ -223,7 +223,7 @@
                         </div>
                     </div>
 
-                    <div class="inscription__form__professional__club__zip col-12 col-md-6">
+                    <div class="inscription__form__professional__zip-club col-12 col-md-6">
                         <label class="form-label" for="zip-club"> 
                             <input id="zip-club" class="form-control input-number" type="text" name="zipClub" inputmode="numeric" placeholder="&nbsp;" pattern="[0-9]{5}" required>
                             <span>Código postal</span>
@@ -336,4 +336,9 @@
             </div>
         </div>
     </form>
+
+    <div class="inscription__message">
+        <h3 class="inscription__message__status">Enviando la inscripción</h3>
+        <include src="./views/statusmark.html"></include>       
+    </div>        
 </div>

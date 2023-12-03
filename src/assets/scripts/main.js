@@ -60,19 +60,6 @@ import Tournament from './../../views/about/Tournament.vue';
    * Inscription 
    */
   if($('.inscription__form').length) {
-    //Change value of progress bar when input is valid    
-    $('input').on('keyup', function() {
-      progressForm();
-    });
-    
-
-    //Allow only press key numbers
-    $('.input-number').on('keydown', function (e) { 
-      if ((e.which < 48 || e.which > 57) && (e.which != 8) && (e.which < 37 || e.which > 40) && (e.which != 46) && (e.which != 9) && (e.which < 96 || e.which > 105)) {
-          e.preventDefault();
-      }
-    });     
-
     //Hide all steps and show first step
     $('.step').hide();
     $('.step').first().show();
@@ -80,12 +67,32 @@ import Tournament from './../../views/about/Tournament.vue';
     //Show or hide buttons
     stepShow();
 
+    //Initial value progress
+    progressForm();
+
+    //Allow only press key numbers
+    $('.input-number').on('keydown', function (e) { 
+      if ((e.which < 48 || e.which > 57) && (e.which != 8) && (e.which < 37 || e.which > 40) && (e.which != 46) && (e.which != 9) && (e.which < 96 || e.which > 105)) {
+          e.preventDefault();
+      }
+    }); 
+
+    //Change value of progress bar when input is valid    
+    $('input').on('keyup', function() {
+      progressForm();
+    });    
+        
     //When select the category the list of corresponding levels is displayed.
       $('#category').on('change', function() {
         let formCateogrySelected = $('#category').val();
         $('.level').hide();
         $('.level-'+formCateogrySelected).show();
+        progressForm();
     });
+
+    $('input[name="level"]').on('change', function() {
+      progressForm();
+  });
 
     //Show prev step
     $('#prev').on('click tap touchstart', function() {
@@ -116,52 +123,15 @@ import Tournament from './../../views/about/Tournament.vue';
     });
   
     //Validate last step 
-    $('#inscription__form').on('submit', function(e) {
-      let nameClub = $('.inscription__form__professional #name-club').is(':invalid');
-      let phoneClub = $('.inscription__form__professional #phone-club').is(':invalid');
-      let emailClub = $('.inscription__form__professional #email-club').is(':invalid');
-      let addressClub = $('.inscription__form__professional #address-club').is(':invalid');
-      let cityClub = $('.inscription__form__professional #city-club').is(':invalid');
-      let zipClub = $('.inscription__form__professional #zip-club').is(':invalid');
-      let category = $('.inscription__form__professional #category').is(':invalid');
-      let level = $('.inscription__form__professional input[name="level"]:checked').length === 0;
+   /* $('#inscription__form').on('submit', function(e) {
 
-      validation(nameClub === false && 
-                phoneClub === false && 
-                emailClub === false && 
-                addressClub === false && 
-                cityClub === false && 
-                zipClub === false && 
-                category === false && 
-                level === false
-      );
-
-      if ($('#inscription__form').is(':valid')) {
-
-        console.log("valid");
-      }
-      
-  /*    if (!this.checkValidity()) {
-        console.log(this.checkValidity());
-        //e.stopPropagation();
-      } else {
-         
-        setTimeout(() => {
-         console.log("inside");
-          this.reportValidity();
-        }, 3000);
-      }
-      this.classList.add('was-validated');
-      e.preventDefault();
-*/
-    });
+    });*/
   }
 
   //Code Bootstrap and Netlify to prevent send form
   const forms = document.querySelectorAll('.needs-validation');
   const handleSubmit = (event) => {
     event.preventDefault();
-  
     const myForm = event.target;
     const formData = new FormData(myForm);
     
@@ -170,13 +140,40 @@ import Tournament from './../../views/about/Tournament.vue';
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString(),
     })
-      .then(() => console.log("Form successfully submitted"))
-      .catch((error) => alert(error));
+      .then(() => {
+          $('.status__spinner').removeClass()
+          $('.status__spinner').addClass('status__spinner');
+          $('.status__spinner').addClass('success');
+      })
+      .catch((error) => {
+        $('.status__spinner').removeClass()
+        $('.status__spinner').addClass('status__spinner');
+        $('.status__spinner').addClass('failed');
+      });
   };
 
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', handleSubmit, event => {
+      let nameClub = $('.inscription__form__professional #name-club').is(':invalid');
+      let phoneClub = $('.inscription__form__professional #phone-club').is(':invalid');
+      let emailClub = $('.inscription__form__professional #email-club').is(':invalid');
+      let addressClub = $('.inscription__form__professional #address-club').is(':invalid');
+      let cityClub = $('.inscription__form__professional #city-club').is(':invalid');
+      let zipClub = $('.inscription__form__professional #zip-club').is(':invalid');
+      let category = $('.inscription__form__professional #category').is(':checked');
+      let level = $('.inscription__form__professional input[name="level"]').is(':checked');
+
+      validation(nameClub === false && 
+                phoneClub === false && 
+                emailClub === false && 
+                addressClub === false && 
+                cityClub === false && 
+                zipClub === false && 
+                category === true && 
+                level === true
+      );
+
       if (!form.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()
@@ -224,8 +221,6 @@ function currentPosition(currentLocation) {
       $('.nav__link-brand').addClass('active');
       break;
   }
-
-  
 }
 
 
@@ -267,24 +262,26 @@ function progressForm() {
   progressBar.css('width', `${progressStatus}%`);
   progressBar.html(`${progressStatus}%`);
 
-  const valuesArray = ['#name', '#surname', '#age', '#phone', '#email', '#address-personal', '#city-personal', '#zip-personal',
-                        '#name-club', '#phone-club', '#email-club', '#address-club', '#city-club', '#zip-club', '#category']
+  const valuesInvalid = ['#name', '#surname', '#age', '#phone', '#email', '#address-personal', '#city-personal', '#zip-personal',
+                        '#name-club', '#phone-club', '#email-club', '#address-club', '#city-club', '#zip-club'];
 
-  let category = $('.inscription__form__professional #category').is(':invalid');
-  let level = $('.inscription__form__professional input[name="level"').length === 0;
+  const valuesChecked = ['#category', 'input[name="level"]'];
 
-  for (const value of valuesArray) {
-    if( $(value).is(':invalid') === false) {
+  for (const value of valuesInvalid) {
+    if($(value).is(':invalid') === false) {
       progressStatus = progressStatus + 6;
       progressBar.css('width', `${progressStatus}%`);
       progressBar.html(`${progressStatus}%`);
     } 
   }
-  
-  if (($('input[name="level"]:checked').length === 0) === false) {
-    progressStatus = progressStatus + 6;
-    progressBar.css('width', `${progressStatus}%`);
-    progressBar.html(`${progressStatus}%`);
+
+  for (const value of valuesChecked) {
+    console.log($(value).is(':checked'));
+    if($(value).is(':checked') === true) {
+      progressStatus = progressStatus + 6;
+      progressBar.css('width', `${progressStatus}%`);
+      progressBar.html(`${progressStatus}%`);
+    } 
   }
 }
 
@@ -313,7 +310,7 @@ function stepShow () {
   }
 
   //Show in element H3 de position
-  $('#step-position').html(index + 1);
+  $('#step-position').html(index);
 }
 
 function validation(inputsValidate) {

@@ -264,7 +264,7 @@ function stepShow () {
   if (index === 1) {
       $('#prev').prop('disabled', true);
       $('#next').prop('disabled', false);
-  } else if (index === lengthSteps-1) {
+  } else if (index === lengthSteps) {
      $('#prev').prop('disabled', false);
      $('#next').prop('disabled', true).hide();
      $('#submit').show();

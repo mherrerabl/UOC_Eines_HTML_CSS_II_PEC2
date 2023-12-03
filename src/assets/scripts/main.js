@@ -137,16 +137,39 @@ import Tournament from './../../views/about/Tournament.vue';
       );
 
       if ($('#inscription__form').is(':valid')) {
+
         console.log("valid");
       }
-
-      e.preventDefault();
-      if (this.checkValidity() === false) {
-        e.stopPropagation();
+      
+  /*    if (!this.checkValidity()) {
+        console.log(this.checkValidity());
+        //e.stopPropagation();
+      } else {
+         
+        setTimeout(() => {
+         console.log("inside");
+          this.reportValidity();
+        }, 3000);
       }
       this.classList.add('was-validated');
+      e.preventDefault();
+*/
     });
   }
+
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
 } )();
 
 

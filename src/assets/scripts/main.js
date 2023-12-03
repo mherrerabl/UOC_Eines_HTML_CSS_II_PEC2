@@ -157,11 +157,26 @@ import Tournament from './../../views/about/Tournament.vue';
     });
   }
 
-  const forms = document.querySelectorAll('.needs-validation')
+  //Code Bootstrap and Netlify to prevent send form
+  const forms = document.querySelectorAll('.needs-validation');
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+    
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
+  };
 
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', handleSubmit, event => {
       if (!form.checkValidity()) {
         event.preventDefault()
         event.stopPropagation()

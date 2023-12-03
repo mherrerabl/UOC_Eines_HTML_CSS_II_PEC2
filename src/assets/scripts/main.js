@@ -124,7 +124,7 @@ import Tournament from './../../views/about/Tournament.vue';
       let cityClub = $('.inscription__form__professional #city-club').is(':invalid');
       let zipClub = $('.inscription__form__professional #zip-club').is(':invalid');
       let category = $('.inscription__form__professional #category').is(':invalid');
-      let level = $('.inscription__form__professional input[name="level"').length === 0;
+      let level = $('.inscription__form__professional input[name="level"]:checked').length === 0;
 
       validation(nameClub === false && 
                 phoneClub === false && 
@@ -226,7 +226,9 @@ function createMap(el, latitude, altitude, img, alt, title, zoom){
 function progressForm() {
   const progressBar = $('.progress__status');
   let progressStatus = 4;    
-  
+  progressBar.css('width', `${progressStatus}%`);
+  progressBar.html(`${progressStatus}%`);
+
   const valuesArray = ['#name', '#surname', '#age', '#phone', '#email', '#address-personal', '#city-personal', '#zip-personal',
                         '#name-club', '#phone-club', '#email-club', '#address-club', '#city-club', '#zip-club', '#category']
 
@@ -238,10 +240,10 @@ function progressForm() {
       progressStatus = progressStatus + 6;
       progressBar.css('width', `${progressStatus}%`);
       progressBar.html(`${progressStatus}%`);
-    }
+    } 
   }
   
-  if (($('input[name="level"').length === 0) === false) {
+  if (($('input[name="level"]:checked').length === 0) === false) {
     progressStatus = progressStatus + 6;
     progressBar.css('width', `${progressStatus}%`);
     progressBar.html(`${progressStatus}%`);
@@ -276,16 +278,17 @@ function stepShow () {
   $('#step-position').html(index + 1);
 }
 
-function validation(condition) {
-  let currentStep = parseInt($('.step:visible').index());
+function validation(inputsValidate) {
+  let index = $('.step:visible').prop('id');
+  index = parseInt(index.slice(5, index.length));
   const lengthSteps = parseInt($('.step').length);
 
   $('.help-message').addClass('invalid-feedback');
 
-  if (condition) {
+  if (inputsValidate) {
     $('#inscription__form').removeClass('was-validated');
     $('.help-message').removeClass('invalid-feedback');
-    if(currentStep + 1 !== lengthSteps) {
+    if(index !== lengthSteps) {
       $('.step:visible').hide().next().show();
     }
     stepShow();
@@ -294,6 +297,7 @@ function validation(condition) {
     $('input:invalid').parent().parent().children('.invalid-feedback').show();
   }
 
+  //While writing, detects if it is valid and deletes the class
   $('.was-validated input').on('keyup', function() {
     if($(this).is(':valid')) {
       $(this).parent().parent().children('.invalid-feedback').hide();

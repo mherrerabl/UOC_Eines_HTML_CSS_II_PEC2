@@ -25,6 +25,7 @@ import Tournament from './../../views/about/Tournament.vue';
    */
   let location = window.location.pathname.slice(1, window.location.pathname.length);
 
+  console.log(location);
   if (location.length > 0) {
     location = location.slice(0, location.length-5);
   }
@@ -100,14 +101,15 @@ import Tournament from './../../views/about/Tournament.vue';
     $('.step').hide();
     $('.step').first().show();
 
+    //Show or hide buttons
+    stepShow();
+
     //When select the category the list of corresponding levels is displayed.
-    $('#category').on('change', function() {
+      $('#category').on('change', function() {
         let formCateogrySelected = $('#category').val();
         $('.level').hide();
         $('.level-'+formCateogrySelected).show();
     });
-
-    stepShow();
 
     //Show prev step
     $('#prev').on('click tap touchstart', function() {
@@ -239,6 +241,9 @@ function progressForm() {
 function stepShow () {
   let index = parseInt($('.step:visible').index());
   const lenghtSteps = parseInt($('.step').length);
+
+  console.log('index', index);
+  console.log('length', lenghtSteps);
 
   $('#submit').hide();
   $('#next').show();

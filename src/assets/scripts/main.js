@@ -62,9 +62,9 @@ import Tournament from './../../views/about/Tournament.vue';
     //variables
     const inscriptionForm = document.getElementById('inscription__form');
     const inputsStep1 = ['#name', '#surname', '#age', '#phone', '#email', '#address-personal', '#city-personal', '#zip-personal'];
-    const inputsStep2 = [];
+    const inputsStep2 = ['#name-club', '#phone-club', '#email-club', '#address-club', '#city-club', '#zip-club', '#category', 'input[name="level"'];
     const stepsForm = [inputsStep1, inputsStep2];
-    
+
 
     //Hide all steps and show first step
     $('.step').hide();
@@ -89,21 +89,21 @@ import Tournament from './../../views/about/Tournament.vue';
     });    
         
     //When select the category the list of corresponding levels is displayed.
-      $('#category').on('change', function() {
-        let formCateogrySelected = $('#category').val();
-        $('.level').hide();
-        $('.level-'+formCateogrySelected).show();
-        progressForm();
+    $('#category').on('change', function() {
+      let formCateogrySelected = $('#category').val();
+      $('.level').hide();
+      $('.level-'+formCateogrySelected).show();
+      progressForm();
     });
 
     $('input[name="level"]').on('change', function() {
       progressForm();
-  });
+    });
 
     //Show prev step
     $('#prev').on('click tap touchstart', function() {
-        $('.step:visible').hide().prev().show();
-        buttonsForm();
+      $('.step:visible').hide().prev().show();
+      buttonsForm();
     });
 
     //Show next step after confirm all inputs are valid
@@ -150,6 +150,7 @@ import Tournament from './../../views/about/Tournament.vue';
       index = parseInt(index.slice(5, index.length));
       for (let i = 0; i < stepsForm.length; i++) {  
         if (index === i+1) {
+          console.log(stepsForm[i]);
           validation(stepsForm[i]);
         }
       }

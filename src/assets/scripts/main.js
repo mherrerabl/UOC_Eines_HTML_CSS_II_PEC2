@@ -6,7 +6,7 @@
 import * as bootstrap from 'bootstrap';
 import $ from 'jquery';
 import { createApp } from 'vue';
-import { buttonsForm, createMap, currentPage, progressForm, validation } from './function';
+import { buttonsForm, createMap, currentPage, progressForm, validation, handleSubmit } from './function';
 
 /**
  * Import components
@@ -24,7 +24,6 @@ import Tournament from './../../views/about/Tournament.vue';
    */
   let currentLocation = window.location.pathname.slice(1, window.location.pathname.length);
 
-  
   if (currentLocation.length > 0) {
     let html = currentLocation.slice(currentLocation.length-5, currentLocation.length)
     if (html === '.html') {
@@ -110,63 +109,16 @@ import Tournament from './../../views/about/Tournament.vue';
     $('#next').on('click tap touchstart', function() {
       let index = $('.step:visible').prop('id');
       index = parseInt(index.slice(5, index.length));
-      /*
-      let name = $('.inscription__form__personal #name').is(':invalid');
-      let surname = $('.inscription__form__personal #surname').is(':invalid');
-      let age = $('.inscription__form__personal #age').is(':invalid');
-      let phone = $('.inscription__form__personal #phone').is(':invalid');
-      let email = $('.inscription__form__personal #email').is(':invalid');
-      let address = $('.inscription__form__personal #address-personal').is(':invalid');
-      let city = $('.inscription__form__personal #city-personal').is(':invalid');
-      let zip = $('.inscription__form__personal #zip-personal').is(':invalid');
-      
-      validation(name === false && 
-                surname === false && 
-                age === false && 
-                phone === false && 
-                email === false && 
-                address === false && 
-                city === false && 
-                zip === false
-      );
-       
-      */
+     
       for (let i = 0; i < stepsForm.length; i++) {  
         if (index === i+1) {
           validation(stepsForm[i]);
         }
       }
     });
-  
-    //Validate last step 
-   /* $('#inscription__form').on('submit', function(e) {
-
-    });*/
-
 
     inscriptionForm.addEventListener('submit', e => {
-      console.log("init");
-      let index = $('.step:visible').prop('id');
-      index = parseInt(index.slice(5, index.length));
-      for (let i = 0; i < stepsForm.length; i++) {  
-        if (index === i+1) {
-          console.log(stepsForm[i]);
-          validation(stepsForm[i]);
-        }
-      }
-
-      console.log("after validation");
-
-      if (!inscriptionForm.checkValidity()) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      
-      inscriptionForm.classList.add('was-validated');
-
-      console.log("after bootstrap");
-
-      handleSubmit(e, stepsForm);
+      handleSubmit(e, stepsForm, inscriptionForm);
     }, false);
 
 
@@ -201,34 +153,5 @@ import Tournament from './../../views/about/Tournament.vue';
     }, false);*/
 
 
-  }
-
-  //Code Bootstrap and Netlify to prevent send form
-  //const inscriptionForm = document.getElementById('inscription__form');
-  function handleSubmit(e) {
-    e.preventDefault();
-    const myForm = e.target;
-    const formData = new FormData(myForm);
-    
-    console.log("netlify");
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        alert("Send")
-          $('.status__spinner').removeClass()
-          $('.status__spinner').addClass('status__spinner');
-          $('.status__spinner').addClass('success');
-      })
-      .catch((error) => {
-        alert("error")
-        $('.status__spinner').removeClass()
-        $('.status__spinner').addClass('status__spinner');
-        $('.status__spinner').addClass('failed');
-      });
-  };
-
-  
+  }  
 } )();

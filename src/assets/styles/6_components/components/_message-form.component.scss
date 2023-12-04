@@ -1,14 +1,19 @@
+/*------------------------------------*\
+  MESSAGE FORM SUBMIT COMPONENT
+\*------------------------------------*/
+@use 'sass:map';
+
 .message-form {
   position: fixed;
   top: calc(-50px - 106px);
   left: 50%;
-  transform: translate(-50%, 0%);
-  width: 100dvw;
-  height: 100dvh;
-  background-color: $color-gray;
-  display: none;
-  text-align: center;
   z-index: 100;
+  display: none;
+  width: 100dvw;
+  height: 100lvh;
+  text-align: center;
+  background-color: $color-gray;
+  transform: translate(-50%, 0%);
 
   &__title {
     @include center-content($top: 40%);
@@ -16,13 +21,13 @@
     color: $color-secundary;
 
     &.success {
-      background-color: $color-success;
       color: $color-black;
+      background-color: $color-success;
     }
 
     &.error {
-      background-color: $color-error;
       color: $color-black;
+      background-color: $color-error;
     }
   }
 
@@ -32,7 +37,7 @@
 
     p {
       font-size: 20px;
-      font-weight: bold;
+      font-weight: map.get($font-family--weight, 'bold');
     }
   }
 
@@ -40,73 +45,73 @@
     @include center-content();
 
     &__spinner {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
       border: $symbol-thickness solid rgba(0, 0, 0, 0.2);
       border-left-color: $color-secundary;
       animation-name: loader-spin;
       animation-duration: 1s;
-      animation-iteration-count: infinite;
       animation-timing-function: linear;
-      position: relative;
-      display: inline-block;
-      vertical-align: top;
-    
-      &, 
+      animation-iteration-count: infinite;
+      
+      &,
       &:after {
-        border-radius: 50%;
         width: $loader-size;
         height: $loader-size;
+        border-radius: 50%;
       }
     
 
       &.success {
-        -webkit-animation: none;
-        animation: none;
         border-color: $color-success;
         transition: border opacity 500ms ease-out;
+        -webkit-animation: none;
+        animation: none;
 
         .message-form__status__spinner__mark {
           &.draw:after {
+            transform: scaleX(-1) rotate(135deg);
+            animation-name: checkmark;
             animation-duration: 1.2s;
             animation-timing-function: ease;
-            animation-name: checkmark;
-            transform: scaleX(-1) rotate(135deg);
           }
 
           &:after {
-            opacity: 1;
-            height: $check-height;
-            width: $check-width;
-            transform-origin: left top;
-            border-right: $symbol-thickness solid $color-success;
-            border-top: $symbol-thickness solid $color-success;
-            content: '';
-            left: $check-left;
-            top: $check-height;
             position: absolute;
+            top: $check-height;
+            left: $check-left;
+            width: $check-width;
+            height: $check-height;
+            content: '';
+            border-top: $symbol-thickness solid $color-success;
+            border-right: $symbol-thickness solid $color-success;
+            opacity: 1;
+            transform-origin: left top;
           }
         }
       }
 
       &.error {
-        -webkit-animation: none;
-        animation: none;
         border-color: $color-error;
         transition: border opacity 500ms ease-out;
+        -webkit-animation: none;
+        animation: none;
 
         .message-form__status__spinner__mark {
+          position: absolute;
           top: 50%;
           left: 50%;
-          position: absolute;
+          animation-name: crossmark;
           animation-duration: 1.2s;
           animation-timing-function: ease;
-          animation-name: crossmark;
 
           &:before, &:after {
             position: absolute;
-            top: -4dvh;
-            content: '';
-            height: 8dvh;
+            top: -4lvh;
             width: 2px;
+            height: 8lvh;
+            content: '';
             background-color: $color-error;
           }
 
@@ -134,26 +139,26 @@
 
 @keyframes checkmark {
   0% {
-    height: 0;
     width: 0;
+    height: 0;
     opacity: 1;
   }
 
   20% {
-    height: 0;
     width: $check-width;
+    height: 0;
     opacity: 1;
   }
 
   40% {
-    height: $check-height;
     width: $check-width;
+    height: $check-height;
     opacity: 1;
   }
 
   100% {
-    height: $check-height;
     width: $check-width;
+    height: $check-height;
     opacity: 1;
   }
 }

@@ -1,13 +1,24 @@
+/*------------------------------------*\
+  FRONT-PAGE LAYOUT
+\*------------------------------------*/
+
 .front-page {
     padding-top: 3vw;
     padding-bottom: 3vw;
     background-color: $color-secundary;
+    container: front-page / inline-size;
 
     &__container {
-        background-image: url('./../images/front_page/front-page.jpg');
+        background-image: url('./../images/front_page/front-page.webp');
         background-repeat: no-repeat;
         background-position: 65%;
         background-size: cover;
+
+        @supports not (background-image: url('./../images/front_page/front-page.webp')) {
+            & {
+                background-image: url('./../images/front_page/front-page.jpg')
+            }
+        }
     
         &__cite-container {
             &__cite {
@@ -36,24 +47,10 @@
 
         @supports not (display: grid) {
             &__cite-container {
+
                 &__cite {
                     margin-bottom: 6vw;
                     background-color: $color-secundary;
-                }
-
-                @media (min-width: $width-md) {
-                    & {
-                        display: flex;
-                    }
-
-                    &:nth-child(even) {
-                        justify-content: end;
-                    }
-
-                    &__cite {
-                        width: 50%;
-                        margin: 0;
-                    }
                 }
             }
         }
@@ -124,12 +121,33 @@
             .area-xs {
                 display: block;
             }
+        }
+    }
+}
 
-            @media (min-width: $width-sm) {
-                & {
-                    background-position: 65%;
-                }
+@supports not (display: grid) {
+    @container front-page (min-width: 768px) {
+        .front-page__container__cite-container {
+            display: flex;
 
+            &:nth-child(even) {
+                justify-content: end;
+            }
+
+            &__cite {
+                width: 50%;
+                margin: 0;
+            }
+        }
+    }
+}
+
+@supports (display: grid) {
+    @container front-page (min-width: 576px) {
+        .front-page {
+            &__container {
+                background-position: 65%;
+                
                 &--display-grid {
                     grid-template-rows: repeat(7, 1fr);
                     grid-template-columns: repeat(3, 1fr);
@@ -173,20 +191,22 @@
                     display: block;
                 }
             }
+        }
+    }
 
-            @media (min-width: $width-md) {
-                & {
-                    background-position: 80%
-                }
-
+    @container front-page (min-width: 768px) {
+        .front-page {
+            &__container {
+                background-position: 80%;
+            
                 &--display-grid {
                     grid-template-rows: repeat(7, 1fr);
                     grid-template-columns: repeat(4, 1fr);
                     grid-gap: 1vw;
-                }
-        
-                &--display-grid > div {
-                    outline-width: 1vw;
+
+                    & > div {
+                        outline-width: 1vw;
+                    }
                 }
 
                 &__cite-container:nth-child(1) {
@@ -210,12 +230,14 @@
                     display: block;
                 }
             }
+        }
+    }
 
-            @media (min-width: $width-lg) {
-                & {
-                    background-position: 65%
-                }
-
+    @container front-page (min-width: 960px) {
+        .front-page {
+            &__container {
+                background-position: 65%;
+                
                 &--display-grid {
                     grid-template-rows: repeat(8, 1fr);
                     grid-template-columns: repeat(5, 1fr);
@@ -241,11 +263,13 @@
                     display: block;
                 }
             }
+        }
+    }
 
-            @media (min-width: $width-xl) {
-                & {
-                    background-position: 75%;
-                }
+    @container front-page (min-width: 1200px) {
+        .front-page {
+            &__container {
+                background-position: 75%;
             }
         }
     }

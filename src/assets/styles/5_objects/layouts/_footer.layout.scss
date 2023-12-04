@@ -1,12 +1,41 @@
+/*------------------------------------*\
+  FOOTER LAYOUT
+\*------------------------------------*/
+
 footer {
     .container-lg {
         display: flex;
         justify-content: center;
     }
 
+    .footer-container {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        background-color: $color-secundary;
+
+        &:first-child {
+            background-color: $color-transparent;
+        }
+    }
+
+    .uoc-container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: $color-fourth;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .fa-brands {
+        color: $color-white;
+    }
+
     .footer__links {
         justify-content: center;
         width: 100vw;
+        
         &__brand {
             display: flex;
             align-items: center;

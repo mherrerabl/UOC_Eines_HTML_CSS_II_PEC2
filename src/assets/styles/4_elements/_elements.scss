@@ -1,6 +1,7 @@
 /*------------------------------------*\
   HTML ELEMENTS
 \*------------------------------------*/
+
 @layer elements {
     /*-------------------------------*\
     Text elements
@@ -14,20 +15,10 @@
         margin-bottom: 25px;
     }
 
-    h3, 
-    h4, 
+    h3,
+    h4,
     h5 {
         @include text($font: $font-family--title);
-    }
-    
-    html {
-        container: general-page / inline-size;
-    }
-
-    @container general-page (width > 576px) {
-        h2 {
-            margin-bottom: 25px;
-        }
     }
 
     p,

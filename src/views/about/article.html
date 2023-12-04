@@ -1,6 +1,10 @@
 <article class="about">
     <div class="about__front-page">
-        <img src="./assets/images/about/front-page-article.jpg" alt="Pelota de tenis en la red">
+        <picture>                 
+            <source srcset="./assets/images/about/webp/front-page-article.webp" type="image/webp">
+            <img src="./assets/images/about/jpg/front-page-article.jpg" alt="Pelota de tenis en la red">
+        </picture>
+        
         <h2 class="about__title">Sobre Racquet League</h2>
         <div class="about__author">
             <h4>Autor:</h4>
@@ -8,7 +12,7 @@
         </div>
     </div>
     
-    <div class="container container--padding-5vw">
+    <div class="container container--padding-2vw">
         <section class="about__section">
             <h3 class="about__section__title">Origen</h3>
             <div class="about__section__origin">
@@ -20,7 +24,10 @@
                 </div>
                 <div>
                     <p>El club de tenis San José de Benilla se fundó en <time datetime="2017">2017</time> por un grupo de 15 aficionados a este deporte de raqueta. Tras estos años de mejoras y evolución, el club ha tomado una nueva iniciativa junto con los demás clubs colindantes de la comarca de organizar una liga de tenis con fines benéficos.</p>
-                    <img src="./assets/images/about/club.jpg" alt="Miembros del club jugando en la pista">
+                    <picture>                 
+                        <source srcset="./assets/images/about/webp/club.webp" type="image/webp">
+                        <img src="./assets/images/about/jpg/club.jpg" alt="Miembros del club jugando en la pista">
+                    </picture>
                     <p>Dicha liga está compuesta por un total de 31 torneos que se llevarán a cabo en las instalaciones del club de tenis de San José de Benilla, que disponen de un total de 4 pistas de tierra batida y 2 sintéticas.</p>
                 </div>
             </div>
@@ -43,7 +50,7 @@
             <p>Si deseas participar en la liga, rellena el siguiente formulario: <a href="inscription.html">Formulario de inscripción</a></p>
             <div class="about__section__tournament">
                 <div class="text-center">
-                    <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#collapseTournament">
+                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="collapse" data-bs-target="#collapseTournament">
                         Cuadro de emparejamientos
                     </button>
                 </div>
@@ -63,15 +70,32 @@
                 <li><span>Tercer premio:</span> Lote Serrano (quesos, embutidos, vino).</li>
                 <li><span>Premio de participación:</span> Tabla de quesos.</li>
             </ul>
-            <p>Con la contribución de los participantes y el dinero recaudado con las entradas venidas, se hará una donación a la organización Infantes con el Deporte para dar visibilidad y ayudar a lograr sus metas.</p>
+            <p>Con la contribución de los participantes y el dinero recaudado con las entradas venidas, se hará una donación a la organización <abbr title="Deporte Infantil para Niños con Enfermedades Crónicas">DINEC</abbr> para dar visibilidad y ayudar a lograr sus metas.</p>
             <div class="row about__section__sponsors">
-                <img class="col-4 col-md-2 sponsor-logo" src="./assets/images/sponsors/sponsor_1.jpg" alt="Sponsor1">
-                <img class="col-4 col-md-2 sponsor-logo" src="./assets/images/sponsors/sponsor_2.jpg" alt="Sponsor2">
-                <img class="col-4 col-md-2 sponsor-logo" src="./assets/images/sponsors/sponsor_3.jpg" alt="Sponsor3">
-                <img class="col-4 col-md-2 sponsor-logo" src="./assets/images/sponsors/sponsor_4.jpg" alt="Sponsor4">
-                <img class="col-4 col-md-2 sponsor-logo" src="./assets/images/sponsors/sponsor_5.jpg" alt="Sponsor5">
-                <img class="col-4 col-md-2 sponsor-logo" src="./assets/images/sponsors/sponsor_6.jpg" alt="Sponsor6">
-
+                <picture class="col-4 col-md-2">                
+                    <source srcset="./assets/images/sponsors/webp/sponsor_1.webp" type="image/webp">
+                    <img class="sponsor-logo" src="./assets/images/sponsors/jpg/sponsor_1.jpg" alt="Sponsor1">
+                </picture>
+                <picture class="col-4 col-md-2">                
+                    <source srcset="./assets/images/sponsors/webp/sponsor_2.webp" type="image/webp">
+                    <img class="sponsor-logo" src="./assets/images/sponsors/jpg/sponsor_2.jpg" alt="Sponsor2">
+                </picture>
+                <picture class="col-4 col-md-2">                
+                    <source srcset="./assets/images/sponsors/webp/sponsor_3.webp" type="image/webp">
+                    <img class="sponsor-logo" src="./assets/images/sponsors/jpg/sponsor_3.jpg" alt="Sponsor3">
+                </picture>
+                <picture class="col-4 col-md-2">                
+                    <source srcset="./assets/images/sponsors/webp/sponsor_4.webp" type="image/webp">
+                    <img class="sponsor-logo" src="./assets/images/sponsors/jpg/sponsor_4.jpg" alt="Sponsor4">
+                </picture>
+                <picture class="col-4 col-md-2">                
+                    <source srcset="./assets/images/sponsors/webp/sponsor_5.webp" type="image/webp">
+                    <img class="sponsor-logo" src="./assets/images/sponsors/jpg/sponsor_5.jpg" alt="Sponsor5">
+                </picture>
+                <picture class="col-4 col-md-2">                
+                    <source srcset="./assets/images/sponsors/webp/sponsor_6.webp" type="image/webp">
+                    <img class="sponsor-logo" src="./assets/images/sponsors/jpg/sponsor_6.jpg" alt="Sponsor6">
+                </picture>
             </div>
         </section>
     </div>

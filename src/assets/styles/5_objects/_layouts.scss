@@ -1,7 +1,12 @@
 /*------------------------------------*\
-  GENERAL LAYOUT
+  LAYOUTS
 \*------------------------------------*/
+
 @layer layouts {
+  @layer header_league {
+    @import './layouts/header.layout';
+  }
+
   @layer footer_league {
     @import './layouts/footer.layout';
   }

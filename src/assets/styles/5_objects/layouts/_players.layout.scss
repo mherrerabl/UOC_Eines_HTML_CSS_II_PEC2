@@ -1,40 +1,49 @@
+/*------------------------------------*\
+  PLAYERS LAYOUT
+\*------------------------------------*/
+
 .players {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5vw;
-    justify-content: space-between;
+    container: players / inline-size;
 
-    .card {
-        flex: 1 1 auto;
-    }
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5vw;
+        justify-content: space-between;
 
-    @media (min-width: $width-sm) {
-        & {
-            gap: 2vw;
+        .card {
+            flex: 1 1 auto;
         }
+    }
+}
+
+@container players (min-width: 576px) {
+    .players__container {
+        gap: 2vw;
         
         .card {
             flex: 0 1 calc(50% - 2vw);
         }
     }
+}
 
-    @media (min-width: $width-lg) {
-        & {
-            gap: 2vw;
-        }
+@container players (min-width: 960px) {
+    .players__container {
+        gap: 2vw;
         
         .card {
             flex: 0 1 calc(33% - 2vw);
         }
     }
+}
 
-    @media (min-width: $width-xl) {
-        & {
-            justify-content: flex-start;
-        }
+@container players (min-width: 1200px) {
+    .players__container {
+        gap: 50px;
+        justify-content: flex-start;
 
         .card {
-            flex: 0 1 calc(25% - 2vw);
+            flex: 0 1 calc(25% - 50px);
         }
     }
 }

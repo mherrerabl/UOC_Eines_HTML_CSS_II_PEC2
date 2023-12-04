@@ -1,21 +1,57 @@
 /*------------------------------------*\
   FORMS COMPONENT
 \*------------------------------------*/
+@use 'sass:map';
+
 /*-------------------------------*\
-  Big forms style
+  For all forms
+\*-------------------------------*/
+/*---------------------------*\
+  Messages
+\*---------------------------*/
+.help-message > div {
+    display: none;
+    
+    small {
+        display: block;
+
+        span {
+            font-style: italic;
+        }
+    }
+}
+
+form {
+    & fieldset > div:has(input:focus:required:invalid) {
+        .help-message__required {
+            display: block;
+        }
+    }
+
+    & fieldset > div:has(input[pattern]:focus:invalid) {
+        .help-message__pattern {
+            display: block;
+        }
+    }
+}
+
+
+
+/*-------------------------------*\
+  Big forms (inscription)
 \*-------------------------------*/
 .form {
     legend {
         margin-bottom: 15px;
     }
 
-    fieldset > div {
+    fieldset :has(> div) {
+        padding-right: 25px;
         padding-bottom: 15px;
         padding-left: 25px;
-        padding-right: 25px;
     }
 
-    fieldset > fieldset{
+    fieldset > fieldset {
         padding: 25px;
         
         &.row {
@@ -24,30 +60,28 @@
             max-width: auto;
         }
     }
-    
-
 
     label {
         position: relative;
         width: 100%;
 
-        span {
+        :is(span) {
             position: absolute;
             top: 20px;
             left: 12px;
             font-size: 16px;
-            color: rgba($color-black,.5);
-            font-weight: 500;
-            transform-origin: 0 0;
-            transform: translate3d(0,0,0);
-            transition: all .2s ease;
+            font-weight: map.get($font-family--weight, 'semibold');
+            color: rgba($color-black, .5);
             pointer-events: none;
+            transition: all .2s ease;
+            transform: translate3d(0,0,0);
+            transform-origin: 0 0;
         }
     }
     
-    input[type=text], input[type=email], input[type=tel], input[type=number] {
-        padding: 16px 12px 0 12px;
+    input:is([type=text], [type=email], [type=tel], [type=number]) {
         height: 56px;
+        padding: 16px 12px 0 12px;
         border-radius: 0;
         box-shadow: inset 0 -1px 0 rgba($color-black, .3);
 
@@ -79,37 +113,5 @@
         height: 56px;
         border-radius: 0;
         box-shadow: inset 0 -1px 0 rgba($color-black, .3);
-    }
-}
-
-/*-------------------------------*\
-  All form
-\*-------------------------------*/
-/*---------------------------*\
-  Messages
-\*---------------------------*/
-.help-message > div {
-    display: none;
-    
-    small {
-        display: block;
-
-        span {
-            font-style: italic;
-        }
-    }
-}
-
-form {
-    & fieldset > div:has(input:focus:required:invalid) {
-        .help-message__required {
-            display: block;
-        }
-    }
-
-    & fieldset > div:has(input[pattern]:focus:invalid) {
-        .help-message__pattern {
-            display: block;
-        }
     }
 }

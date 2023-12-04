@@ -1,12 +1,130 @@
-.about__section {
-    container: about-origin / inline-size;
+/*------------------------------------*\
+  ABOUT LAYOUT
+\*------------------------------------*/
+
+.about {
+    &__front-page {
+        position: relative;
+        height: 25dvh;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            opacity: 0.4;
+        }
+    }
+
+    &__title {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        width: max-content;
+        transform: translate(-50%, 50%);
+    }
+
+    &__author {
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translate(-50%, 10%);
+
+        & > * {
+            text-align: center;
+        }
+
+        &:first-child {
+            padding: 0;
+        }
+    }
+
+    &__section {
+        container: about-origin / inline-size;
+        
+        &:has(+ .about__section) {
+            margin-bottom: 75px;
+        }
+
+        &__map, &__calendar, &__awards, &__sponsors {
+            margin-right: 25px;
+            margin-left: 25px;
+        }
+
+        &__title {
+            padding: 15px;
+            margin-bottom: 25px;
+            background-color: $color-fourth;
+        }
+
+        img {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        &__origin {
+            &__cite-container {
+                height: fit-content;
+                padding-top: 25px;
+                padding-right: 15px;
+                padding-bottom: 25px;
+                padding-left: 15px;
+                margin: 25px;
+                text-align: end;
+                background-color: $color-transparent;
+                border-top: 4px solid $color-fourth;
+                border-bottom: 4px solid $color-fourth;
+
+                &__cite {
+                    margin: 0;
+
+                    p:first-child {
+                        font-size: 1.2rem;
+                        font-style: italic;
+                    }
+
+                    p:last-child {
+                        margin: 0;
+                    }
+                }
+            }
+
+            
+
+            img {
+                padding: 2vw;
+            }
+        }
+
+        &__map {
+            height: 350px;
+        }
+
+        &__sponsors {
+            img {
+                border-radius: 50%;
+            }
+        }
+
+        :is(li, p) :is(b, span, abbr) {
+            @include text($color: $color-secundary, $weight: 'bold');
+        }
+    }
 }
 
 @container about-origin (min-width: 900px) {
     .about__section__origin {
+        display: grid;
         grid-template-columns: 35% 60%;
         gap: 5%;
-        display: grid;
         margin-left: 5%;
+
+        &__cite-container {
+            margin: auto;
+        }
+
+        img {
+            padding: 25px;
+        }
     }
 }

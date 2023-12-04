@@ -1,10 +1,14 @@
 /*------------------------------------*\
   UTILITIES
 \*------------------------------------*/
+
 @layer utilities {
     /*-------------------------------*\
-      Generals
+      Bootstrap
     \*-------------------------------*/
+    /*--------------------------*\
+      Generals
+    \*--------------------------*/
     :root {
         @include colorRGB(--bs-info-rgb, $color-secundary);
     }
@@ -26,9 +30,9 @@
         margin-bottom: 75px;
     }
 
-    .container--padding-5vw {
+    .container--padding-2vw {
         @media (min-width: $width-xl) {
-            @include make-container($padding-x: 5vw);
+            @include make-container($padding-x: 2vw);
         }
     }
 
@@ -38,17 +42,17 @@
 
 
 
-    /*-------------------------------*\
+    /*--------------------------*\
       Header
-    \*-------------------------------*/
+    \*--------------------------*/
     //Background nav
     .md-body-tertiary {
         --bs-bg-opacity: 0;
     }
 
-    /*--------------------------*\
+    /*---------------------*\
       Size menu
-    \*--------------------------*/
+    \*---------------------*/
     .offcanvas {
         --bs-offcanvas-width: 70vw;
         max-width: 200px;
@@ -58,11 +62,9 @@
         }
     }
 
-
-    
-    /*-------------------------------*\
+    /*---------------------*\
       Toggle button
-    \*-------------------------------*/
+    \*---------------------*/
     .navbar-toggler {
         border: none;
 
@@ -92,5 +94,4 @@
     input:-webkit-autofill:active {
         transition: background-color 5000000s ease-in-out 0s;
     }
-    
 }

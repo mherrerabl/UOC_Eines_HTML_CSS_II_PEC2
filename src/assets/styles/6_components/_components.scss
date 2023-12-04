@@ -1,29 +1,10 @@
 /*------------------------------------*\
   COMPONENTS
 \*------------------------------------*/
+
 @layer components {
   @layer logo {
     @import './components/logo.component';
-  }
-
-  @layer header_league {
-    @import './components/header.component';
-  }
-
-  @layer footer_league {
-    @import './components/footer.component';
-  }
-
-  @layer members {
-    @import './components/players.component';
-  }
-
-  @layer about {
-    @import './components/about.component';
-  }
-
-  @layer inscription {
-    @import './components/inscription.component';
   }
 
   @layer navegation {

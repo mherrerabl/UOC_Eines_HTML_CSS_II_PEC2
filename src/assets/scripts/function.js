@@ -222,43 +222,47 @@ function handleSubmit(e, stepsForm, form) {
     form.classList.add('was-validated');
 
     if(formInvalid === false) {
-      $('.inscription__message').show();
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      })
-      .then(() => {
-        setTimeout(() => {
-            let counter = 3;
-            $('.inscription__message__status').html('Se ha enviado la inscripción.');
-            $('.inscription__message__status').addClass('success');
-            $('.status__spinner').addClass('success');
+        $('.inscription__message').show();
+        $('html, body').animate({
+            scrollTop: 0, 
+        }, 500, 'swing');
 
-            $('.inscription__message').append(`<div class="inscription__message__info"><h4>Redirigiendo a la página de inicio en:</h4><p>${counter}</p></div>`);
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+        .then(() => {
+            setTimeout(() => {
+                let counter = 3;
+                $('.inscription__message__status').html('Se ha enviado la inscripción.');
+                $('.inscription__message__status').addClass('success');
+                $('.status__spinner').addClass('success');
 
-            setTimeout(() => {                
-                setInterval(() => {
-                    if(counter != 0) {
-                        counter = counter - 1;
-                        $('.inscription__message__info p').html(counter);
-                    } else {
-                        window.location.href = '/';
-                    }
+                $('.inscription__message').append(`<div class="inscription__message__info"><h4>Redirigiendo a la página de inicio en:</h4><p>${counter}</p></div>`);
+
+                setTimeout(() => {                
+                    setInterval(() => {
+                        if(counter != 0) {
+                            counter = counter - 1;
+                            $('.inscription__message__info p').html(counter);
+                        } else {
+                            window.location.href = '/';
+                        }
+                    }, 1000);
                 }, 1000);
-            }, 1000);
-        }, 2000);
-        
-      })
-      .catch((error) => {
-        setTimeout(() => {
-            $('.inscription__message__status').html('No se ha podido enviar la inscripción.');
-            $('.inscription__message__status').addClass('error');
-            $('.status__spinner').addClass('error');
+            }, 2500);
+            
+        })
+        .catch((error) => {
+            setTimeout(() => {
+                $('.inscription__message__status').html('No se ha podido enviar la inscripción.');
+                $('.inscription__message__status').addClass('error');
+                $('.status__spinner').addClass('error');
 
-            $('.inscription__message').append(`<div class="inscription__message__info"><h4>Error: ${error}</h4></div>`);
-          }, 2000);
-      });
+                $('.inscription__message').append(`<div class="inscription__message__info"><h4>Error: ${error}</h4></div>`);
+            }, 2000);
+        });
     }
   }
 

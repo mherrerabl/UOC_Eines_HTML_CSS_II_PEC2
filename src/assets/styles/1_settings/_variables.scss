@@ -18,7 +18,7 @@ $color-fourth: #D4D4D4;
 $color-black: #000;
 $color-white: #FFF;
 $color-transparent: color.adjust($color-fourth, $alpha: -0.8);
-$color-gray: color.adjust($color-fourth, $alpha: -0.2);
+$color-gray: color.adjust($color-fourth, $alpha: -0.1);
 $color-success: lch(81% 132 130);
 $color-error: lch(50% 132 36);
 

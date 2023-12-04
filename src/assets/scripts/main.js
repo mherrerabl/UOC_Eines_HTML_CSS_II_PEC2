@@ -32,6 +32,14 @@ import Tournament from './../../views/about/Tournament.vue';
     currentPage(currentLocation);
   }
 
+  /**
+   * Contact form
+   */
+  const conctactForm = document.getElementById('contact-form');
+  const inputValues = ['#name-user', '#email-user', '#message-user'];
+  conctactForm.addEventListener('submit', e => {
+    handleSubmit(e, inputValues, conctactForm, 'el mensaje');
+  }, false);
   
 
 
@@ -112,46 +120,18 @@ import Tournament from './../../views/about/Tournament.vue';
      
       for (let i = 0; i < stepsForm.length; i++) {  
         if (index === i+1) {
-          validation(stepsForm[i]);
+          validation(stepsForm[i], inscriptionForm);
         }
       }
+
+      $('html, body').animate({
+        scrollTop: 0, 
+      }, 0, 'swing');
     });
 
     inscriptionForm.addEventListener('submit', e => {
-      handleSubmit(e, stepsForm, inscriptionForm);
+      handleSubmit(e, stepsForm, inscriptionForm, 'la inscripción');
     }, false);
-
-
-
-    // Loop over them and prevent submission
-    /*inscriptionForm.addEventListener('submit', handleSubmit, event => {
-      console.log("aqui");
-      let nameClub = $('.inscription__form__professional #name-club').is(':invalid');
-      let phoneClub = $('.inscription__form__professional #phone-club').is(':invalid');
-      let emailClub = $('.inscription__form__professional #email-club').is(':invalid');
-      let addressClub = $('.inscription__form__professional #address-club').is(':invalid');
-      let cityClub = $('.inscription__form__professional #city-club').is(':invalid');
-      let zipClub = $('.inscription__form__professional #zip-club').is(':invalid');
-      let category = $('.inscription__form__professional #category').is(':invalid');
-      let level = $('.inscription__form__professional input[name="level"]').is(':checked');
-
-      validation(nameClub === false && 
-                phoneClub === false && 
-                emailClub === false && 
-                addressClub === false && 
-                cityClub === false && 
-                zipClub === false && 
-                category === false && 
-                level === true
-      );
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      
-      form.classList.add('was-validated')
-    }, false);*/
-
 
   }  
 } )();

@@ -1,0 +1,173 @@
+.message-form {
+  position: fixed;
+  top: calc(-50px - 106px);
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 100dvw;
+  height: 100dvh;
+  background-color: $color-gray;
+  display: none;
+  text-align: center;
+  z-index: 100;
+
+  &__title {
+    @include center-content($top: 40%);
+    width: fit-content;
+    color: $color-secundary;
+
+    &.success {
+      background-color: $color-success;
+      color: $color-black;
+    }
+
+    &.error {
+      background-color: $color-error;
+      color: $color-black;
+    }
+  }
+
+  &__info {
+    @include center-content($top: 70%);
+    width: fit-content;
+
+    p {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  &__status {
+    @include center-content();
+
+    &__spinner {
+      border: $symbol-thickness solid rgba(0, 0, 0, 0.2);
+      border-left-color: $color-secundary;
+      animation-name: loader-spin;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+    
+      &, 
+      &:after {
+        border-radius: 50%;
+        width: $loader-size;
+        height: $loader-size;
+      }
+    
+
+      &.success {
+        -webkit-animation: none;
+        animation: none;
+        border-color: $color-success;
+        transition: border opacity 500ms ease-out;
+
+        .message-form__status__spinner__mark {
+          &.draw:after {
+            animation-duration: 1.2s;
+            animation-timing-function: ease;
+            animation-name: checkmark;
+            transform: scaleX(-1) rotate(135deg);
+          }
+
+          &:after {
+            opacity: 1;
+            height: $check-height;
+            width: $check-width;
+            transform-origin: left top;
+            border-right: $symbol-thickness solid $color-success;
+            border-top: $symbol-thickness solid $color-success;
+            content: '';
+            left: $check-left;
+            top: $check-height;
+            position: absolute;
+          }
+        }
+      }
+
+      &.error {
+        -webkit-animation: none;
+        animation: none;
+        border-color: $color-error;
+        transition: border opacity 500ms ease-out;
+
+        .message-form__status__spinner__mark {
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          animation-duration: 1.2s;
+          animation-timing-function: ease;
+          animation-name: crossmark;
+
+          &:before, &:after {
+            position: absolute;
+            top: -4dvh;
+            content: '';
+            height: 8dvh;
+            width: 2px;
+            background-color: $color-error;
+          }
+
+          &:before {
+            transform: rotate(45deg);
+          }
+          &:after {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+  }
+
+  20% {
+    height: 0;
+    width: $check-width;
+    opacity: 1;
+  }
+
+  40% {
+    height: $check-height;
+    width: $check-width;
+    opacity: 1;
+  }
+
+  100% {
+    height: $check-height;
+    width: $check-width;
+    opacity: 1;
+  }
+}
+
+@keyframes crossmark {
+  0% {
+    transform: scale(0%);
+  }
+
+  60% {
+    transform: scale(110%);
+  }
+  
+  100% {
+    transform: scale(100%);
+  }
+}

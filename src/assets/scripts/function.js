@@ -126,42 +126,13 @@ function buttonsForm () {
   //Show in element H3 de position
   $('#step-position').html(index);
 }
-/*
-function validation(inputsValidate) {
-  let index = $('.step:visible').prop('id');
-  index = parseInt(index.slice(5, index.length));
-  const lengthSteps = parseInt($('.step').length);
 
-  $('.help-message').addClass('invalid-feedback');
 
-  if (inputsValidate) {
-    $('#inscription__form').removeClass('was-validated');
-    $('.help-message').removeClass('invalid-feedback');
-    if(index !== lengthSteps) {
-      $('.step:visible').hide().next().show();
-    }
-    //buttonsForm();
-  } else {
-    $('#inscription__form').addClass('was-validated');
-    $('input:invalid').parent().parent().children('.invalid-feedback').show();
-  }
-
-  //While writing, detects if it is valid and deletes the class
-  $('.was-validated input').on('keyup', function() {
-    if($(this).is(':valid')) {
-      $(this).parent().parent().children('.invalid-feedback').hide();
-    } else {
-      $(this).parent().parent().children('.invalid-feedback').show();
-    }
-  });
-}*/
-
-function validation(inputsArray) {
-    let index = $('.step:visible').prop('id');
-    index = parseInt(index.slice(5, index.length));
-    const lengthSteps = parseInt($('.step').length);
+//Validation forms
+function validation(inputsArray, form) {
     let validInputs = [];
-    let invalidForm = true;
+    let invalidForm = true;    
+
   
     $('.help-message').addClass('invalid-feedback');
 
@@ -176,17 +147,34 @@ function validation(inputsArray) {
     }
 
     invalidForm = validInputs.includes(false);
-    if(!invalidForm) {
-        $('#inscription__form').removeClass('was-validated');
-        $('.help-message').removeClass('invalid-feedback');
-        if(index !== lengthSteps) {
-            $('.step:visible').hide().next().show();
+
+    if ($('#'+form.id).children('.step').length > 0) {
+        const lengthSteps = parseInt($('.step').length);
+        let index = $('.step:visible').prop('id');
+        index = parseInt(index.slice(5, index.length));
+
+        if(!invalidForm) {
+            $('#'+form.id).removeClass('was-validated');
+            $('.help-message').removeClass('invalid-feedback');
+            if(index !== lengthSteps) {
+                $('.step:visible').hide().next().show();
+            }
+            buttonsForm();
+        } else {
+            $('#'+form.id).addClass('was-validated');
+            $('input:invalid').parent().parent().children('.invalid-feedback').show();
         }
-        buttonsForm();
     } else {
-        $('#inscription__form').addClass('was-validated');
-        $('input:invalid').parent().parent().children('.invalid-feedback').show();
+        if(!invalidForm) {
+            $('#'+form.id).removeClass('was-validated');
+            $('.help-message').removeClass('invalid-feedback');
+        } else {
+            $('#'+form.id).addClass('was-validated');
+            $('#'+form.id+' :invalid').parent().parent().children('.invalid-feedback').show();
+            $('#'+form.id+' :invalid').parent().parent().children('.invalid-feedback').children().show();
+        }
     }
+    
 
     $('.was-validated input').on('keyup', function() {
         if($(this).is(':valid')) {
@@ -200,19 +188,25 @@ function validation(inputsArray) {
 }
 
 //Code Bootstrap and Netlify to prevent send form
-function handleSubmit(e, stepsForm, form) {
+function handleSubmit(e, inputsForm, form, titleMessage) {
     e.preventDefault();
     const myForm = e.target;
     const formData = new FormData(myForm);
     let formInvalid = true;
+
     
-    let index = $('.step:visible').prop('id');
-    index = parseInt(index.slice(5, index.length));
-    for (let i = 0; i < stepsForm.length; i++) {  
-      if (index === i+1) {
-        formInvalid = validation(stepsForm[i]);
-      }
+    if ($('#'+form.id).children('.step').length > 0) {
+        let index = $('.step:visible').prop('id');
+        index = parseInt(index.slice(5, index.length));
+        for (let i = 0; i < inputsForm.length; i++) {  
+            if (index === i+1) {
+                formInvalid = validation(inputsForm[i], form);
+            }
+        }
+    } else {
+        formInvalid = validation(inputsForm, form);
     }
+    
 
     if (!form.checkValidity()) {
       e.preventDefault();
@@ -222,7 +216,8 @@ function handleSubmit(e, stepsForm, form) {
     form.classList.add('was-validated');
 
     if(formInvalid === false) {
-        $('.inscription__message').show();
+        $('.message-form').show();
+        $('.message-form__title').html(`Enviando ${titleMessage}.`);
         $('html, body').animate({
             scrollTop: 0, 
         }, 500, 'swing');
@@ -235,17 +230,17 @@ function handleSubmit(e, stepsForm, form) {
         .then(() => {
             setTimeout(() => {
                 let counter = 3;
-                $('.inscription__message__status').html('Se ha enviado la inscripción.');
-                $('.inscription__message__status').addClass('success');
-                $('.status__spinner').addClass('success');
+                $('.message-form__title').html(`Se ha enviado ${titleMessage}.`);
+                $('.message-form__title').addClass('success');
+                $('.message-form__status__spinner').addClass('success');
 
-                $('.inscription__message').append(`<div class="inscription__message__info"><h4>Redirigiendo a la página de inicio en:</h4><p>${counter}</p></div>`);
+                $('.message-form__info').append(`<h4>Redirigiendo a la página de inicio en:</h4><p>${counter}</p>`);
 
                 setTimeout(() => {                
                     setInterval(() => {
                         if(counter != 0) {
                             counter = counter - 1;
-                            $('.inscription__message__info p').html(counter);
+                            $('.message-form__info p').text(counter);
                         } else {
                             window.location.href = '/';
                         }
@@ -256,11 +251,11 @@ function handleSubmit(e, stepsForm, form) {
         })
         .catch((error) => {
             setTimeout(() => {
-                $('.inscription__message__status').html('No se ha podido enviar la inscripción.');
-                $('.inscription__message__status').addClass('error');
-                $('.status__spinner').addClass('error');
+                $('.message-form__title').html(`No se ha podido enviar ${titleMessage}.`);
+                $('.message-form__title').addClass('error');
+                $('.message-form__status__spinner').addClass('error');
 
-                $('.inscription__message').append(`<div class="inscription__message__info"><h4>Error: ${error}</h4></div>`);
+                $('.message-form__info').append(`<h4>Error: ${error}</h4>`);
             }, 2000);
         });
     }

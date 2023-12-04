@@ -12,7 +12,7 @@
 
             <div class="inscription__form__personal__name col-12 col-md-6">
                 <label class="form-label" for="name">
-                    <input id="name" class="form-control" type="text" name="name" placeholder="&nbsp;" pattern="[a-zA-Z]{1,60}" required>
+                    <input id="name" class="form-control" type="text" name="name" placeholder="&nbsp;" pattern="[a-zA-Z\s]{1,60}" required>
                     <span>Nombre</span>
                 </label>
                 <div class="help-message">
@@ -28,7 +28,7 @@
 
             <div class="inscription__form__personal__surname col-12 col-md-6">
                 <label class="form-label" for="surname"> 
-                    <input id="surname" class="form-control" type="text" name="surname" placeholder="&nbsp;" pattern="[a-zA-Z]{1,60}" required>
+                    <input id="surname" class="form-control" type="text" name="surname" placeholder="&nbsp;" pattern="[a-zA-Z\s]{1,60}" required>
                     <span>Apellido/s</span>
                 </label>
                 <div class="help-message">
@@ -243,7 +243,7 @@
             <fieldset class="inscription__form__professional__sport-level col-12 row">
                 <legend class="h4 col-12">Categoría y nivel</legend>
 
-                <div class="inscription__form__professional__sport-level col-12 col-md-4">
+                <div class="inscription__form__professional__sport-level col-12 col-md-6">
                     <label class="inscription__form__professional__sport-level__category form-label" for="category">Categoría
                         <select id="category" class="form-select" name="category" required>
                             <option value="" selected disabled>Selecciona una categoría</option>
@@ -337,8 +337,5 @@
         </div>
     </form>
 
-    <div class="inscription__message">
-        <h3 class="inscription__message__status">Enviando la inscripción</h3>
-        <include src="./views/statusmark.html"></include>       
-    </div>        
+    <include src="./views/forms/message-form.html"></include>       
 </div>

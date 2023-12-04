@@ -46,8 +46,8 @@
     @import './components/tournament.component';
   }
 
-  @layer statusmark {
-    @import './components/statusmark.component';
+  @layer message {
+    @import './components/message-form.component';
   }
 }
 

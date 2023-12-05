@@ -229,7 +229,7 @@ function handleSubmit(e, inputsForm, form, titleMessage) {
         .then(() => {
             setTimeout(() => {
                 let counter = 3;
-                $('.message-form__info').append(`<h4>Redirigiendo a la página de inicio en:</h4><p>${counter}</p>`);
+                $('.message-form__info').append(`<h4>Redirigiendo a la página de inicio en:</h4><p>${counter} segundos</p>`);
 
                 $('.message-form__title').html(`Se ha enviado ${titleMessage}.`);
                 $('.message-form__title').addClass('success');
@@ -242,7 +242,7 @@ function handleSubmit(e, inputsForm, form, titleMessage) {
                             counter = counter - 1;
                             $('.message-form__info p').text(`${counter} segundos`);
                         } else {
-                            window.location.href = '/';
+                            //window.location.href = '/';
                         }
                     }, 1000);
                 }, 1000);

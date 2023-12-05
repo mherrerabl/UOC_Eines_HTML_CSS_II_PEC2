@@ -10,13 +10,13 @@
   z-index: 100;
   display: none;
   width: 100dvw;
-  height: 100dvw;
+  height: 100dvh;
   text-align: center;
   background-color: $color-modal;
   transform: translate(-50%, -50%);
 
   &__title {
-    @include center-content($top: 40%);
+    @include center-content($top: 20%);
     width: fit-content;
     padding: 15px;
     background-color: $color-third;
@@ -33,7 +33,7 @@
   }
 
   &__info {
-    @include center-content($top: 70%);
+    @include center-content($top: 80%);
     width: fit-content;
 
     p {

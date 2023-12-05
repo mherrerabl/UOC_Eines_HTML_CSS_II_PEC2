@@ -242,7 +242,7 @@ function handleSubmit(e, inputsForm, form, titleMessage) {
                             counter = counter - 1;
                             $('.message-form__info p').text(`${counter} segundos`);
                         } else {
-                            //window.location.href = '/';
+                            window.location.href = '/';
                         }
                     }, 1000);
                 }, 1000);
@@ -256,12 +256,10 @@ function handleSubmit(e, inputsForm, form, titleMessage) {
                 $('.message-form__title').html(`No se ha podido enviar ${titleMessage}.`);
                 $('.message-form__title').addClass('error');
                 $('.message-form__status__spinner').addClass('error');
-                $('.message-form__info').children().addClass('error');
-
-                
+                $('.message-form__info').children().addClass('error');  
             }, 2000);
         });
     }
-  }
+}
 
 export { buttonsForm, createMap, currentPage, progressForm, validation, handleSubmit }

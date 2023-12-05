@@ -35,15 +35,3 @@
     margin-right: auto;
     margin-left: auto;
 }
-
-@mixin make-col($size: false, $columns: $grid-columns) {
-    @if $size {
-      flex: 0 0 auto;
-      width: calc(($size / $columns) * 100);
-    }
-    
-    @else {
-      flex: 1 1 0;
-      max-width: 100%;
-    }
-}

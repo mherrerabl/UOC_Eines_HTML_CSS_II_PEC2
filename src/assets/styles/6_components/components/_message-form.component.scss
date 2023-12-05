@@ -5,20 +5,21 @@
 
 .message-form {
   position: fixed;
-  top: calc(-50px - 106px);
+  top: 50%;
   left: 50%;
   z-index: 100;
   display: none;
   width: 100dvw;
-  height: 100lvh;
+  height: 100dvw;
   text-align: center;
-  background-color: $color-gray;
-  transform: translate(-50%, 0%);
+  background-color: $color-modal;
+  transform: translate(-50%, -50%);
 
   &__title {
     @include center-content($top: 40%);
     width: fit-content;
-    color: $color-secundary;
+    padding: 15px;
+    background-color: $color-third;
 
     &.success {
       color: $color-black;
@@ -39,6 +40,16 @@
       font-size: 20px;
       font-weight: map.get($font-family--weight, 'bold');
     }
+
+    & > * {
+      &.success {
+        color: $color-success;
+      }
+
+      &.error {
+        color: $color-error;
+      }
+    }
   }
 
   &__status {
@@ -49,7 +60,7 @@
       display: inline-block;
       vertical-align: top;
       border: $symbol-thickness solid rgba(0, 0, 0, 0.2);
-      border-left-color: $color-secundary;
+      border-left-color: $color-third;
       animation-name: loader-spin;
       animation-duration: 1s;
       animation-timing-function: linear;

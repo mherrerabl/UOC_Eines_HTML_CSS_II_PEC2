@@ -1,0 +1,15 @@
+/*------------------------------------*\
+  GENERICS
+\*------------------------------------*/
+
+@layer generics {
+  @layer normalize {
+    @import './generics/normalize.generics';
+  }
+
+  @layer bootstrap {
+      @import './generics/bootstrap.generics';
+    }
+  }
+  
+  

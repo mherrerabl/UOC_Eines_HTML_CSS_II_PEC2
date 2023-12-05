@@ -16,7 +16,8 @@
 
 @container inscription (min-width: 900px) {
     .inscription__form {
-        max-width: 900px;
+        width: 60dvw;
+        max-width: 960px;
         margin: 0 auto;
         margin-top: 5dvh;
     }

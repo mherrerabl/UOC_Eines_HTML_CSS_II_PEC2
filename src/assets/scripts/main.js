@@ -129,11 +129,9 @@ import Tournament from './../../views/about/Tournament.vue';
       }, 0, 'swing');
     });
 
-
     //Validate form before send
     inscriptionForm.addEventListener('submit', e => {
       handleSubmit(e, stepsForm, inscriptionForm, 'la inscripción');
     }, false);
-
   }  
 } )();

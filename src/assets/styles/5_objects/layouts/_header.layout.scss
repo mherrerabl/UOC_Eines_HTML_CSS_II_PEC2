@@ -7,6 +7,10 @@ header {
   padding-bottom: 15px;
   background-color: $color-secundary;
 
+  .container-header {
+    padding: 0;
+  }
+
   .nav {
     &__link:not(.active) {
       @include text($color: $color-black);

@@ -4,7 +4,7 @@
 
 //Import
 import L from 'leaflet';
-import $, { error } from 'jquery';
+import $ from 'jquery';
 
 
 //Change colors link depends of current web page
@@ -175,7 +175,6 @@ function validation(inputsArray, form) {
         }
     }
     
-
     $('.was-validated input').on('keyup', function() {
         if($(this).is(':valid')) {
           $(this).parent().parent().children('.invalid-feedback').hide();
@@ -230,17 +229,18 @@ function handleSubmit(e, inputsForm, form, titleMessage) {
         .then(() => {
             setTimeout(() => {
                 let counter = 3;
+                $('.message-form__info').append(`<h4>Redirigiendo a la página de inicio en:</h4><p>${counter}</p>`);
+
                 $('.message-form__title').html(`Se ha enviado ${titleMessage}.`);
                 $('.message-form__title').addClass('success');
-                $('.message-form__status__spinner').addClass('success');
-
-                $('.message-form__info').append(`<h4>Redirigiendo a la página de inicio en:</h4><p>${counter}</p>`);
+                $('.message-form__status__spinner').addClass('success');  
+                $('.message-form__info').children().addClass('success');              
 
                 setTimeout(() => {                
                     setInterval(() => {
                         if(counter != 0) {
                             counter = counter - 1;
-                            $('.message-form__info p').text(counter);
+                            $('.message-form__info p').text(`${counter} segundos`);
                         } else {
                             window.location.href = '/';
                         }
@@ -251,11 +251,14 @@ function handleSubmit(e, inputsForm, form, titleMessage) {
         })
         .catch((error) => {
             setTimeout(() => {
+                $('.message-form__info').append(`<h4>Error: ${error}</h4>`);
+                
                 $('.message-form__title').html(`No se ha podido enviar ${titleMessage}.`);
                 $('.message-form__title').addClass('error');
                 $('.message-form__status__spinner').addClass('error');
+                $('.message-form__info').children().addClass('error');
 
-                $('.message-form__info').append(`<h4>Error: ${error}</h4>`);
+                
             }, 2000);
         });
     }

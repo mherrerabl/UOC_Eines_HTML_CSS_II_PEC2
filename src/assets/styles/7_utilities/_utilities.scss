@@ -38,8 +38,6 @@
     }
   }
 
-  
-
   .container--padding-2vw {
     @media (min-width: $width-xl) {
       @include make-container($padding-x: 2vw);
@@ -64,7 +62,7 @@
     max-width: 200px;
 
     @media (min-width: $width-md) {
-        max-width: fit-content;
+      max-width: fit-content;
     }
   }
 
@@ -75,7 +73,7 @@
     border: none;
 
     &:focus {
-        box-shadow: none;
+      box-shadow: none;
     }
   }
 

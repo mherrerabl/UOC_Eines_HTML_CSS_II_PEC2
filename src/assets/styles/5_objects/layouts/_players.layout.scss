@@ -36,14 +36,3 @@
         }
     }
 }
-
-@container players (min-width: 1200px) {
-    .players__container {
-        gap: 50px;
-        justify-content: flex-start;
-
-        .card {
-            flex: 0 1 calc(25% - 50px);
-        }
-    }
-}
